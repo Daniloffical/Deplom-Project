@@ -1,5 +1,38 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.db.utils import IntegrityError
+from django.contrib.auth import authenticate, login
+
 
 # Create your views here.
-def show_enter(request):
-    return render(request, 'enter.html')
+def show_login(request):
+    context = {}
+    if request.method == 'POST':
+        login_user = request.POST.get("login")
+        password = request.POST.get("password")
+        user = authenticate(request, username = login_user, password = password)
+        if user != None:
+            login(request, user)
+            return redirect('main')
+        else:
+            context['error'] = 'Невірний логін'
+    return render(request, 'login.html', context)
+
+def show_registration(request):
+    context = {}
+    if request.method == 'POST':
+        login = request.POST.get('login')
+        password = request.POST.get('password')
+        password_confirm = request.POST.get('password_confirm')
+        context['login'] = login
+        context['password'] = password
+        context['password_confirm'] = password_confirm
+        if password == password_confirm:
+            try:
+                User.objects.create_user(username = login, password = password)
+                return redirect('login')
+            except IntegrityError:
+                context['error'] = 'Користувач вже існує'
+        else:
+            context['error'] = 'Паролі не співпадаються'
+    return render(request, 'registration.html', context)
