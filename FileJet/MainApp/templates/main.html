@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %} <link rel="stylesheet" href="{% static 'main.css' %}"> {% endblock %}
+{% block title %}Main{% endblock %}\
+
+
+{% block content %}
+<div id="content">
+    <input type="text" id="search-bar" placeholder="Знайти ваш перший файл...">
+</div>
+{% endblock %}
