@@ -4,11 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="{% static 'base/base.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <style>
+        body{
+            background-image: url("{% static 'images/window_registration.png' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
     {% block style %} {% endblock %}
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body>
+    <header>
+        <p><a href="{% url 'main' %}"><img class="logo" src="{% static 'images/logo.png' %}" alt="Логотип компанії"></a></p>
+        <div class="navigation_buttons">
+            <a href="{% url 'upload_file' %}"><button class="upload_file">Завантажити файли</button></a>
+            <a href="{% url 'about_us' %}"><button class="about_us">Про нас</button></a>
+            <a href="{% url 'documentation' %}"><button class="support">Підтримка</button></a>
+        </div>
+        <div class="no_account">
+            <a href="{% url 'profile' %}"><img class="image_account" src="{% static 'images/elipss.png' %}" alt="Нема аккаунту">Unknown</a>
+        </div>   
+    </header>
     {% block content %}{% endblock %}
 </body>
 </html>

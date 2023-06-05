@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+}
+
+header{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px;
+    /* gap: 144px; */
+
+    position: relative;
+    /* width: 100vw; */
+    height: 10vh;
+
+    /* Header */
+
+    background: #98DDFC;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+}
+.logo{
+    width: 136px;
+    height: 52px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+.navigation_buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 0px;
+    gap: 57px;
+    width: 720px;
+    height: 92px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+.upload_file{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 12px;
+    gap: 10px;
+    width: 214px;
+    height: 44px;
+    background: #1CAEEF;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    border: 0px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+}
+.upload_file:hover{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 12px;
+    gap: 10px;
+    width: 214px;
+    height: 44px;
+    background: #0C68E8;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    flex: none;
+    order: 0;
+    border: 0px;
+    flex-grow: 0;
+
+}
+.about_us{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 12px;
+    gap: 10px;
+    width: 98px;
+    height: 44px;
+    background: #1CAEEF;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    flex: none;
+    order: 1;
+    border: 0px;
+    flex-grow: 0;
+
+}
+.about_us:hover{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 12px;
+    gap: 10px;
+    width: 98px;
+    height: 44px;
+    background: #0C68E8;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    flex: none;
+    order: 1;
+    border: 0px;
+    flex-grow: 0;
+
+}
+.support{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 12px;
+    gap: 10px;
+    width: 124px;
+    height: 44px;
+    background: #1CAEEF;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    flex: none;
+    order: 2;
+    border: 0px;
+    flex-grow: 0;
+}
+.support:hover{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 12px;
+    gap: 10px;
+    width: 124px;
+    height: 44px;
+    background: #0C68E8;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    flex: none;
+    order: 2;
+    border: 0px;
+    flex-grow: 0;
+}
+.no_account{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 19px;
+
+    width: 78px;
+    height: 74px;
+
+    border-radius: 10px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+.image_account{
+    box-sizing: border-box;
+
+    width: 45px;
+    height: 45px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    width: 45px;
+    height: 45px;
+    
+    font-size: 14px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 150%;
+    /* identical to box height, or 21px */
+    
+    letter-spacing: -0.019em;
+    
+    color: #000000;
+    
+    
+    /* Inside auto layout */
+    
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+a{
+    text-decoration: none;
+}

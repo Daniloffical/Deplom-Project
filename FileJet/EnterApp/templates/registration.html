@@ -1,10 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}<link rel="stylesheet" href="{% static 'css/enter.css' %}">{% endblock %}
+{% block title %}Registration{% endblock %}
+
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    <p style="color: red;">{{error}}</p>
-    <p><input type="text" placeholder="login" name="login" value="{{login}}" required></p>
-    <p><input type="password" placeholder="password" name="password" value="{{password}}" required></p>
-    <p><input type="password" placeholder="password_confirm" name="password_confirm" value="{{password_confirm}}" required></p>
-    <button>Реєстрація</button>
-</form>
+<div id="content">
+    <main>
+        
+        <form method="post">
+        {% csrf_token %}
+        <div class="registration_content">
+            <div class="registration">Реєстрація:</div>
+            
+            <p><input class="login_field" type="text" placeholder="Введіть ім'я:" name="login" value="{{login}}" required></p>
+            <p><input class="password_field" type="password" placeholder="Введіть пароль:" name="password" value="{{password}}" required></p>
+            <p><input class="password_confirm_field" type="password" placeholder="Підтвердіть пароль:" name="password_confirm" value="{{password_confirm}}" required></p>
+            <button class="button_registeration">Зареєструватись</button>
+            <p style="color: red;">{{error}}</p>
+        </div>
+        </form>
+    </main>
+</div>
 {% endblock %}
