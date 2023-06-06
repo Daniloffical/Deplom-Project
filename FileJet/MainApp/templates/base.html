@@ -27,7 +27,14 @@
             <a href="{% url 'documentation' %}">Підтримка</a>
         </div>
         <div class="no_account">
-            <a href="{% url 'profile' %}"><img class="image_account" src="{{profile.image.url}}" alt="Нема аккаунту">{{ profile.user.username }}</a>
+            <a href="{% url 'profile' %}">
+                {% if profile.image %}
+                <img class="image_account" src="{{ profile.image.url }}" alt="Нема аккаунту">
+                {% else %}
+                <img class="image_account" src="{% static 'elipss.png' %}" alt="Нема аккаунту">
+                {% endif %}
+                {{ profile.user.username }}
+            </a>
         </div>   
     </header>
     {% block content %}{% endblock %}

@@ -93,6 +93,25 @@ header{
     order: 2;
     flex-grow: 0;
 }
+.no_account a{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 19px;
+
+    width: 78px;
+    height: 74px;
+
+    border-radius: 10px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
 .image_account{
     box-sizing: border-box;
 
@@ -103,7 +122,6 @@ header{
     /* Inside auto layout */
 
     flex: none;
-    order: 0;
     flex-grow: 0;
     width: 45px;
     height: 45px;
@@ -124,6 +142,5 @@ header{
     /* Inside auto layout */
     
     flex: none;
-    order: 1;
     flex-grow: 0;
 }

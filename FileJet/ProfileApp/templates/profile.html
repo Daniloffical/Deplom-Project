@@ -1,9 +1,46 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block style %}{% endblock %}
-{% block title %}{% endblock %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/profile.css' %}"> {% endblock %}
+{% block title %}Profile{% endblock %}
 
 {% block content %}
-
+<div id="content">
+    <div id="profile-menu">
+        <div id="profile-picture">
+            {% if profile.image %}
+            <img class="image_account" src="{{ profile.image.url }}" alt="Нема аккаунту">
+            {% else %}
+            <img class="image_account" src="{% static 'elipss.png' %}" alt="Нема аккаунту">
+            {% endif %}
+        </div>
+        <div id="text-info">
+            <div id="name-login">
+                <span>{{ profile.user.first_name }}</span>
+                <span>{{ profile.user.username }}</span>
+            </div>
+            <div id="email">
+                <span>Пошта: {{ profile.user.email }}</span>
+            </div>
+            <div id="amount-files">
+                <span>Завантажено файлів: 1000</span>
+            </div>
+            <div id="acception">
+                <span>Користувач не підтверджений</span>
+                <a href="" id="button-accept-email">Підтвердити!</a>
+            </div>
+        </div>
+        <div id="profile-buttons">
+            <a href=""><span>Змінити пароль</span></a>
+            <a href=""><span>Вийти з акаунту</span></a>
+        </div>
+    </div>
+    <div id="profile-content">
+        <div id="buttons-menu">
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+        </div>
+    </div>
+</div>
 {% endblock %}
