@@ -5,7 +5,20 @@
 
 
 {% block content %}
-<div id="content">
-    <input type="text" id="search-bar" placeholder="Знайти ваш перший файл...">
-</div>
+  <div id="content">
+    {% if not user.is_authenticated %}
+      <div id="box">
+        <img class="logo" src="{% static 'images/logo.png' %}" alt="Логотип компанії">
+        <a href="{% url 'registration' %}">  
+          <span>Зареєструватись</span>
+        </a> 
+        <a href="{% url 'login' %}">
+          <span>Увійти</span>
+        </a>
+      </div>
+    {% endif %}
+    {% if user.is_authenticated %}
+      <input type="text" id="search-bar" placeholder="Знайти ваш перший файл...">
+    {% endif %}
+  </div>
 {% endblock %}

@@ -37,7 +37,7 @@ main {
     flex-grow: 0;
 }
 
-.login_field{
+.field{
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -54,41 +54,7 @@ main {
     order: 0;
     flex-grow: 0;
 }
-.password_field{
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 2px 0px 2px 10px;
-    gap: 24px;
-    width: 311px;
-    height: 34px;
-    background: #F8F8F8;
-    border: 2px solid #3E88EF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.32);
-    border-radius: 10px;
-    flex: none;
-    order: 2;
-    flex-grow: 0;
 
-}
-.password_confirm_field{
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 2px 0px 2px 10px;
-    gap: 24px;
-    width: 311px;
-    height: 34px;
-    background: #F8F8F8;
-    border: 2px solid #3E88EF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.32);
-    border-radius: 10px;
-    flex: none;
-    order: 2;
-    flex-grow: 0;
-}
 .button_registeration{
     display: flex;
     flex-direction: row;

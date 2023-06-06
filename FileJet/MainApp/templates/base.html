@@ -1,5 +1,7 @@
 <html lang="en">
     {% load static %}
+    {% load base %}
+    {% give_user request as profile %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,15 +18,16 @@
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body>
+    
     <header>
         <p><a href="{% url 'main' %}"><img class="logo" src="{% static 'images/logo.png' %}" alt="Логотип компанії"></a></p>
         <div class="navigation_buttons">
-            <a href="{% url 'upload_file' %}"><button class="upload_file">Завантажити файли</button></a>
-            <a href="{% url 'about_us' %}"><button class="about_us">Про нас</button></a>
-            <a href="{% url 'documentation' %}"><button class="support">Підтримка</button></a>
+            <a href="{% url 'upload_file' %}">Завантажити файли</a>
+            <a href="{% url 'about_us' %}">Про нас</a>
+            <a href="{% url 'documentation' %}">Підтримка</a>
         </div>
         <div class="no_account">
-            <a href="{% url 'profile' %}"><img class="image_account" src="{% static 'images/elipss.png' %}" alt="Нема аккаунту">Unknown</a>
+            <a href="{% url 'profile' %}"><img class="image_account" src="{{profile.image.url}}" alt="Нема аккаунту">{{ profile.user.username }}</a>
         </div>   
     </header>
     {% block content %}{% endblock %}

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+from ProfileApp.models import Profile
+ # Create your views here.
 def show_main(request):
     return render(request, 'main.html')

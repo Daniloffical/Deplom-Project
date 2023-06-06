@@ -29,6 +29,7 @@ from AboutUsApp.views import *
 
 
 documentation_patterns = [
+    path('', show_documentation, name='documentation'),
     path('accounts',  show_documentation_accounts, name='documentation_account'),
     path('confident', show_documentation_confident, name='documentation_confident'),
     path('files', show_documentation_files, name='documentation_files'),
@@ -45,11 +46,7 @@ urlpatterns = [
     path('upload_file/', show_upload_file, name='upload_file'),
     path('registration/', show_registration, name='registration'),
     path('login/', show_login, name='login'),
-    path('documentation/', show_documentation, name='documentation'),
-    path('documentation/accounts', show_documentation_accounts, name='documentation_accounts'),
-    path('documentation/confident', show_documentation_confident, name='documentation_confident'),
-    path('documentation/files', show_documentation_files, name='documentation_files'),
-
+    path('documentation/', include(documentation_patterns), name='documentation'),
 ]
 
 if DEBUG:
