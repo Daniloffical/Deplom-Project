@@ -10,15 +10,15 @@
     align-items: center;
     padding: 0px;
 
-    height: 100%;
+
+
 
 
     /* Inside auto layout */
 
-    flex: none;
+    flex: 1 1 auto;
     order: 1;
     align-self: stretch;
-    flex-grow: 0;
 }
 
 #content #search-bar{

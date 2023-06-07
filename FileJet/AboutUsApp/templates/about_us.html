@@ -1,9 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block style %}{% endblock %}
+{% block style %}<link rel="stylesheet" href="{% static 'css/about_us.css' %}">{% endblock %}
 {% block title %}{% endblock %}
 
 {% block content %}
+<main>
+    <div class="first_slide">
+        <img class="first_icon" src="{% static 'images/logo.png' %}" alt="">
+        <div class="first_text"></div>
+    </div>
 
+    <div class="second_slide">
+        <img class="second_icon" src="{% static 'images/folder_icon.png' %}" alt="">
+        <div class="second_text"></div>
+    </div>
+
+    <div class="third_slide">
+        <img class="third_icon" src="{% static 'images/chat_icon.png' %}" alt="">
+    </div>
+
+    <div class="fourth_slide">
+        <img class="fourth_icon" src="{% static 'images/lock_icon.png' %}" alt="">
+    </div>
+
+    <div class="fifth_slide">
+        <img class="fifth_icon" src="{% static 'images/icon.png' %}" alt="">
+    </div>
+</main>
+
+<footer></footer>
 {% endblock %}

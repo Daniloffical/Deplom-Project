@@ -11,8 +11,8 @@
         {% csrf_token %}
         <div class="login_content">
             <div class="login">Логін:</div>
-            <p><input class="field" type="text" placeholder="login" name="login" required></p>
-            <p><input class="field type="password" placeholder="password" name="password" required></p>
+            <p><input class="field" type="text" placeholder="Введіть псевдонім" name="login" required></p>
+            <p><input class="field type="password" placeholder="Введіть пароль" name="password" required></p>
             <button class="button_login">Вхід</button>
             <p style="color: red;">{{error}}</p>
         </div>

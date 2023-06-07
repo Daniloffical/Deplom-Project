@@ -17,34 +17,32 @@
     {% block style %} {% endblock %}
     <title>{% block title %} {% endblock %}</title>
 </head>
-<header>
-    <div id="left-header-side">
-        <p><a href="{% url 'main' %}"><img class="logo" src="{% static 'images/logo.png' %}" alt="Логотип компанії"></a></p>
-        {% if user.is_authenticated %}
-        <input type="text" id="search-bar" placeholder="Знайти ваш перший файл...">
-        {% endif %}
-    </div>
-    
-    <div class="navigation_buttons">
-        <a href="{% url 'upload_file' %}">Завантажити файли</a>
-        <a href="{% url 'about_us' %}">Про нас</a>
-        <a href="{% url 'documentation' %}">Підтримка</a>
-        <a href="{% url 'subscription' %}">Підписки</div></a>
-    </div>
-    <div class="no_account">
-        <a href="{% url 'profile' %}">
-            {% if profile.image %}
-            <img class="image_account" src="{{ profile.image.url }}" alt="Нема аккаунту">
-            {% else %}
-            <img class="image_account" src="{% static 'elipss.png' %}" alt="Нема аккаунту">
-            {% endif %}
-            {{ profile.user.username }}
-        </a>
-    </div>   
-</header>
 <body>
-    
-    
+    <header>
+        <div id="left-header-side">
+            <p><a href="{% url 'main' %}"><img class="logo" src="{% static 'images/logo.png' %}" alt="Логотип компанії"></a></p>
+            {% if user.is_authenticated %}
+            <input type="text" id="search-bar" placeholder="Знайти ваш перший файл...">
+            {% endif %}
+        </div>
+        
+        <div class="navigation_buttons">
+            <a href="{% url 'upload_file' %}">Завантажити файли</a>
+            <a href="{% url 'about_us' %}">Про нас</a>
+            <a href="{% url 'documentation' %}">Підтримка</a>
+            <a href="{% url 'subscription' %}">Підписки</div></a>
+        </div>
+        <div class="no_account">
+            <a href="{% url 'profile' %}">
+                {% if profile.image %}
+                <img class="image_account" src="{{ profile.image.url }}" alt="Нема аккаунту">
+                {% else %}
+                <img class="image_account" src="{% static 'elipss.png' %}" alt="Нема аккаунту">
+                {% endif %}
+                {{ profile.user.username }}
+            </a>
+        </div>   
+    </header>
     {% block content %}{% endblock %}
 </body>
 </html>

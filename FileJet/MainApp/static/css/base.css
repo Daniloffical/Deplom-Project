@@ -10,7 +10,10 @@
 body{
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-flow: column;
 }
+
 
 a, a:hover, a:visited, a:active {
     color: inherit;
@@ -18,23 +21,23 @@ a, a:hover, a:visited, a:active {
 }
 
 header{
-    position: fixed;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 
     width: 100%;
-    height: 10vh;
+    height: 100px;
 
     /* Header */
 
     background: #98DDFC;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+    flex: 0 1 auto;
 }
 
 #left-header-side{
-    padding-left: 3%;
+    padding-left: 1.5%;
     gap: 2%;
     display: flex;
     justify-content: space-between;
