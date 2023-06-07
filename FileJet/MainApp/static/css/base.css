@@ -8,8 +8,8 @@
 }
 
 body{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 
 a, a:hover, a:visited, a:active {
@@ -18,16 +18,13 @@ a, a:hover, a:visited, a:active {
 }
 
 header{
-    
+    position: fixed;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 30px;
-    /* gap: 144px; */
 
-    position: relative;
-    /* width: 100vw; */
+    width: 100%;
     height: 10vh;
 
     /* Header */
@@ -35,6 +32,16 @@ header{
     background: #98DDFC;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
 }
+
+#left-header-side{
+    padding-left: 3%;
+    gap: 2%;
+    display: flex;
+    justify-content: space-between;
+    width: 28%;
+    align-items: center;
+}
+
 .logo{
     width: 136px;
     height: 52px;
@@ -42,6 +49,33 @@ header{
     order: 0;
     flex-grow: 0;
 }
+
+header #search-bar{
+    padding: 8px 6px;
+
+    width: 70%;
+
+    /* White */
+    font-size:16px;
+
+    background: #F8F8F8;
+    /* button 2 */
+
+    border: 4px solid #3E88EF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.32);
+    border-radius: 10px;
+    transition: 500ms ease-in-out;
+}
+
+header #search-bar:focus {
+    content: 'Пошук';
+    outline-width: 0;
+    border: 4px solid #1D6AEF;
+}
+
+
+
+
 .navigation_buttons{
     display: flex;
     flex-direction: row;

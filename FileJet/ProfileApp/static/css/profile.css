@@ -260,17 +260,17 @@
     justify-content: center;
     align-items: flex-start;
 
-    gap: 54px;
     
 
-    width: 100%;
-    height: 84px;
+    width: 80%;
+    height: 70px;
     
     background: #FFFFFF;
     /* Persian Blue */
     
     border: 2px solid #0836C1;
     border-radius: 20px;
+    overflow:hidden;
     
 }
 
@@ -281,18 +281,35 @@
     align-items: center;
     
 
+
+
     /* French Sky Blue */
-    
-    padding: 12px 0px;
+    width: 33.333333%;
+    height: 100%;
 
     background: #61AFF7;
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
-    border-radius: 14px;
     
+
     /* Inside auto layout */
     
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
+}
+
+#buttons-menu a:hover{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+
+    
+
+    /* French Sky Blue */
+    width: 33.333333%;
+    height: 100%;
+
+    background: #0C68E8;
+    
+
+    /* Inside auto layout */
+    
 }

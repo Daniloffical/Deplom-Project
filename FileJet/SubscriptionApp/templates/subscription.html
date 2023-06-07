@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}<link rel="stylesheet" href="{% static 'css/subscription.css' %}">{% endblock %}
+{% block title %}Subscription{% endblock %}
+
+{% block content %}
+<div id="content">
+    <span>Тарифи</span>
+    <div id="subscriptions-list">
+        <div class="subscription-container">
+            <div class="subscription-header">
+                <img src="" alt="">
+                <span></span>
+            </div>
+            <div class="subscription-body">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+            <div class="subscription-footer">
+                <span>Price: 1$</span>
+                <a class="order-button" href=""></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

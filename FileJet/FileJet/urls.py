@@ -26,6 +26,7 @@ from SearchApp.views import *
 from ProfileApp.views import *
 from MainApp.views import *
 from AboutUsApp.views import *
+from SubscriptionApp.views import *
 
 
 documentation_patterns = [
@@ -46,7 +47,9 @@ urlpatterns = [
     path('upload_file/', show_upload_file, name='upload_file'),
     path('registration/', show_registration, name='registration'),
     path('login/', show_login, name='login'),
+    path('logout/', log_out, name='logout'),
     path('documentation/', include(documentation_patterns), name='documentation'),
+    path('subscription/', show_subscription, name='subscription'),
 ]
 
 if DEBUG:

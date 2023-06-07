@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'MainApp',
     'FileApp',
     'ProfileApp',
+    'SubscriptionApp'
 ]
 
 MIDDLEWARE = [
