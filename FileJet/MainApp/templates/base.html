@@ -20,7 +20,7 @@
 <body>
     <header>
         <div id="left-header-side">
-            <p><a href="{% url 'main' %}"><img class="logo" src="{% static 'images/logo.png' %}" alt="Логотип компанії"></a></p>
+            <p><a href="{% url 'main' %}"><img class="logo" src="{% static 'images/header-logo.png' %}" alt="Логотип компанії"></a></p>
             {% if user.is_authenticated %}
             <input type="text" id="search-bar" placeholder="Знайти ваш перший файл...">
             {% endif %}

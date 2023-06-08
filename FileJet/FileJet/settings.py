@@ -84,19 +84,18 @@ WSGI_APPLICATION = 'FileJet.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':  'FILES',
-        'USER': 'postgresql',
-        'PASSWORD': '1234',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':  'files',
+        'USER': 'andrew',
+        'PASSWORD': '12345',
         'HOST': 'localhost' ,
-        'PORT': '1025',
     }
 }
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': BASE_DIR / 'db.sqlite3',
-        
+      
 #     }
 # }
 
