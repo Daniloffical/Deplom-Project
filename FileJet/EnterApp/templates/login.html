@@ -1,16 +1,26 @@
+<!--успадковується від base.html-->
 {% extends 'base.html' %}
+<!--Ця директива використовується для завантаження бібліотеки тегів статичних файлів шаблонів, -->
 {% load static %}
 
 
+<!--отвечает за включение файла enter.css-->
 {% block style %}<link rel="stylesheet" href="{% static 'css/enter.css' %}">{% endblock %}
+<!--налаштування заголовка сторінки-->
 {% block title %}Login{% endblock %}
+<!--керування вмістом веб-сторінки -->
 {% block content %}
+<!--Елемент служить контейнером або розділом у HTML-документі, який може -->
 <div id="content">   
     <main>
+        <!--створення інтерактивної форми на веб-сторінці -->
         <form method="post">
+        <!--це міра безпеки, що використовується для захисту від атак із підробкою міжсайтових запитів. -->
         {% csrf_token %}
         <div class="login_content">
+        <!--логін.-->
             <div class="login">Логін:</div>
+        <!--Листи перевірки-->
             <p><input class="field" type="text" placeholder="Введіть псевдонім" name="login" required></p>
             <p><input class="field type="password" placeholder="Введіть пароль" name="password" required></p>
             <button class="button_login">Вхід</button>

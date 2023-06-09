@@ -62,7 +62,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 0px;
+    padding: 0px 20px;
     
     width: 220px;
     height: 87px;
@@ -104,4 +104,13 @@
 
 .order-button:hover{
     background: #43A9B5;
+}
+.li-2{
+    font-size: 12px;
+    hyphens: manual;
+}
+
+.li-3{
+    font-size: 10px;
+    hyphens: manual;
 }

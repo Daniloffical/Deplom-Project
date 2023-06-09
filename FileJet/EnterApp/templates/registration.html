@@ -1,18 +1,26 @@
+<!--успадковується від base.html-->
 {% extends 'base.html' %}
+<!--Ця директива використовується для завантаження бібліотеки тегів статичних файлів шаблонів, -->
 {% load static %}
 
+
+<!--отвечает за включение файла enter.css-->
 {% block style %}<link rel="stylesheet" href="{% static 'css/enter.css' %}">{% endblock %}
+<!--визначає блок з ім'ям «заголовок» та встановлює для його вмісту значення «Реєстрація»-->
 {% block title %}Registration{% endblock %}
 
+<!--керування вмістом веб-сторінки-->
 {% block content %}
+<!--Елемент служить контейнером або розділом у HTML-документі, який може -->
 <div id="content">
     <main>
-        
+         <!--створення інтерактивної форми на веб-сторінці -->
         <form method="post">
+        <!--це міра безпеки, що використовується для захисту від атак із підробкою міжсайтових запитів. -->
         {% csrf_token %}
         <div class="registration_content">
             <div class="registration">Реєстрація:</div>
-            <!-- <p><input type="file" id="img" name="img" accept="image/*"></p> -->
+            <!-- Листи перевірки -->
             <p><input class="field" type="text" placeholder="Введіть ім'я:" name="name" value="{{login}}" required></p>
             <p><input class="field" type="text" placeholder="Введіть псевдонім" name="login" value="{{login}}" required></p>
             <p><input class="field" type="email" placeholder="Введіть єлектрону пошту" name="email" value="{{email}}" required></p>

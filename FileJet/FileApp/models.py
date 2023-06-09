@@ -2,6 +2,7 @@ from django.db import models
 from ProfileApp.models import User
 # Create your models here.
 class File(models.Model):
+    file_path = models.FileField(upload_to='files/%Y/%m/%d', max_length=100, blank=True)
     name = models.CharField(max_length=255)
     description = models.TextField()
     image = models.ImageField(upload_to='image/%Y/%m/%d', blank=True)
