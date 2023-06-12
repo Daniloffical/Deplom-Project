@@ -1,5 +1,7 @@
 <html lang="en">
+    <!--творець правильної URL-адреси для статичного файлу-->
     {% load static %}
+    <!--база завантаження-->
     {% load base %}
     {% give_user request as profile %}
 <head>
@@ -10,6 +12,8 @@
     <style>
         body{
             background-image: url("{% static 'images/window_registration.png' %}");
+            background-position: center;
+            background-attachment: fixed;
             background-repeat: no-repeat;
             background-size: cover;
         }

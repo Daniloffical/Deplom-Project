@@ -132,3 +132,40 @@ main {
     order: 1;
     flex-grow: 0;
 }
+
+#regestration_fields{
+    flex-direction: column;
+    display: flex;
+    align-items: none;
+    gap: 10px;
+}
+#regestration_fields_1{
+    flex-direction: column;
+    display: flex;
+    align-items: none;
+    
+}
+#regestration_fields_2{
+    flex-direction: column;
+    display: flex;
+    align-items: none;
+    
+}
+#regestration_fields_3{
+    flex-direction: column;
+    display: flex;
+    align-items: none;
+    
+}
+#regestration_fields_4{
+    flex-direction: column;
+    display: flex;
+    align-items: none;
+    
+}
+#regestration_fields_5{
+    flex-direction: column;
+    display: flex;
+    align-items: none;
+    
+}

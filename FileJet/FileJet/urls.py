@@ -30,26 +30,26 @@ from SubscriptionApp.views import *
 
 
 documentation_patterns = [
-    path('', show_documentation, name='documentation'),
-    path('accounts',  show_documentation_accounts, name='documentation_account'),
-    path('confident', show_documentation_confident, name='documentation_confident'),
-    path('files', show_documentation_files, name='documentation_files'),
+    path(r'', show_documentation, name='documentation'),
+    path(r'accounts',  show_documentation_accounts, name='documentation_account'),
+    path(r'confident', show_documentation_confident, name='documentation_confident'),
+    path(r'files', show_documentation_files, name='documentation_files'),
 ]
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('about_us/', show_about_us, name='about_us'),
-    path('', show_main, name='main'),
-    path('search/', show_search, name='search'),
-    path('profile/', show_profile, name='profile'),
-    path('file/', show_file, name='file'),
-    path('upload_file/', show_upload_file, name='upload_file'),
-    path('registration/', show_registration, name='registration'),
-    path('login/', show_login, name='login'),
-    path('logout/', log_out, name='logout'),
-    path('documentation/', include(documentation_patterns), name='documentation'),
-    path('subscription/', show_subscription, name='subscription'),
+    path(r'admin/', admin.site.urls),
+    path(r'about_us/', show_about_us, name='about_us'),
+    path(r'', show_main, name='main'),
+    path(r'search/', show_search, name='search'),
+    path(r'profile/', show_profile, name='profile'),
+    path(r'file/<int:file_pk>', show_file, name='file'),
+    path(r'upload_file/', show_upload_file, name='upload_file'),
+    path(r'registration/', show_registration, name='registration'),
+    path(r'login/', show_login, name='login'),
+    path(r'logout/', log_out, name='logout'),
+    path(r'documentation/', include(documentation_patterns), name='documentation'),
+    path(r'subscription/', show_subscription, name='subscription'),
 ]
 
 if DEBUG:

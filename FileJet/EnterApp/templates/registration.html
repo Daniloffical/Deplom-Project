@@ -19,13 +19,30 @@
         <!--це міра безпеки, що використовується для захисту від атак із підробкою міжсайтових запитів. -->
         {% csrf_token %}
         <div class="registration_content">
-            <div class="registration">Реєстрація:</div>
+            <div class="registration"><h1>Реєстрація:</h1></div>
             <!-- Листи перевірки -->
-            <p><input class="field" type="text" placeholder="Введіть ім'я:" name="name" value="{{login}}" required></p>
-            <p><input class="field" type="text" placeholder="Введіть псевдонім" name="login" value="{{login}}" required></p>
-            <p><input class="field" type="email" placeholder="Введіть єлектрону пошту" name="email" value="{{email}}" required></p>
-            <p><input class="field" type="password" placeholder="Введіть пароль:" name="password" value="{{password}}" required></p>
-            <p><input class="field" type="password" placeholder="Підтвердіть пароль:" name="password_confirm" value="{{password_confirm}}" required></p>
+            <div id="regestration_fields">
+                <div id="regestration_fields_1">
+                    <h4>Ім'я</h4>
+                    <p><input class="field" type="text" placeholder="Введіть ім'я:" name="name" value="{{name}}" required></p>
+                </div>
+                <div id="regestration_fields_2">
+                    <h4>Псевдонім</h4>
+                    <p><input class="field" type="text" placeholder="Введіть псевдонім" name="login" value="{{login}}" required></p>
+                </div>
+                <div id="regestration_fields_3">
+                    <h4>Електрона пошта</h4>
+                    <p><input class="field" type="email" placeholder="Введіть єлектрону пошту" name="email" value="{{email}}" required></p>
+                </div>
+                <div id="regestration_fields_4">
+                    <h4>Пароль</h4>
+                    <p><input class="field" type="password" placeholder="Введіть пароль:" name="password" value="{{password}}" required></p>
+                </div>
+                <div id="regestration_fields_5">
+                    <h4>Підтвердіть пароль</h4>
+                    <p><input class="field" type="password" placeholder="Підтвердіть пароль:" name="password_confirm" value="{{password_confirm}}" required></p>
+                </div>
+            </div>
             <button class="button_registeration">Зареєструватись</button>
             <p style="color: red;">{{error}}</p>
         </div>

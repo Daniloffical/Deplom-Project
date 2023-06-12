@@ -7,20 +7,22 @@
 {% block content %}
     <main>
         <div class="settings_image">
-            <div class="image_design">
+            <h1>Здесь идет верстка</h1>
+            <!-- <div class="image_design">
                 <img src="{% static 'images/none_page.jpg' %}" alt="">
                 <div class="settings_image_design">
                     <h3>Назва:</h3>
                     <h3>Тип:</h3>
                     <h3>Важить:</h3>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="settings">
             
-            <form method="post">
-                <div id="form-content">
-                    {% csrf_token %}
+            <form method="post" enctype="multipart/form-data" novalidate>
+                
+                <!-- <div id="form-content">
+                    
                     <label for="img-pick" id="label-img-pick">
                         Додати зображення
                     </label>
@@ -37,9 +39,12 @@
                       </select>
                     <div class="private_file"><input name="private" class="private_file" type="checkbox">Зробити приватним</div>
                     <div class="private_file"><input type="checkbox" >Погодитись з нашою політикою</div>
-                    <div class="send"><button type="submit" class="button_send">Опублікувати</button></div>
+                    
         
-                </div>
+                </div> -->
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="send"><button type="submit" class="button_send">Опублікувати</button></div>
             </form>
 
         </div>

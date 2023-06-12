@@ -48,11 +48,6 @@ main{
 form{
     width: 100%;
     height: 100%;
-}
-
-#form-content{
-    width: 100%;
-    height: 100%;
     box-sizing: border-box;
 
     /* Auto layout */
@@ -61,10 +56,9 @@ form{
     flex-direction: column;
     align-items: center;
     padding: 20px 90px 30px;
-    gap: 15px;
     
     overflow-y: scroll;
-    
+    gap: 10px;
     background: #FFFFFF;
 }
 
@@ -92,23 +86,35 @@ form{
 }
 
 
-#img-pick{
+#id_file_path, #id_image{
     display: none;
 }
 
-#label-img-pick{
+label{
+    display: none;
+}
+
+label[for=id_file_path], label[for=id_image]{
+    font-size: 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 7px 12px;
 
-    width: 60%;
 
     cursor: pointer;
     background: #1CAEEF;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
-    border-radius: 14px;
+    border-radius: 11px;
+}
+
+label[for=id_file_path]:before{
+    content: "Вибрати файл"; font-size: 18px; 
+}
+
+label[for=id_image]:before{
+    content: "Вибрати зображення"; font-size: 18px; 
 }
 
 
@@ -121,7 +127,7 @@ form{
 }
 
 
-.father_file{
+#id_name{
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -133,6 +139,21 @@ form{
     border: 2px solid #3E88EF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.32);
     border-radius: 10px;
+}
+
+textarea{
+    height: 5em;
+    width: 20em;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #F8F8F8;
+    padding: 2px 0px 2px 4px;
+    border: 2px solid #3E88EF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.32);
+    border-radius: 10px;
+    resize: none;
 }
 
 
@@ -165,3 +186,6 @@ form{
 .button_send:hover{
     background: #0C68E8;
 }
+
+
+
