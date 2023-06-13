@@ -3,12 +3,15 @@
     {% load static %}
     <!--база завантаження-->
     {% load base %}
+    <!--управления логикой шаблона-->
     {% give_user request as profile %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--создания URL-адреса статического файла на основе конфигурации-->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <!--который устанавливает фоновое изображение элемента <body>с помощью ссылки на статический файл Django -->
     <style>
         body{
             background-image: url("{% static 'images/window_registration.png' %}");
@@ -19,17 +22,22 @@
         }
     </style>
     {% block style %} {% endblock %}
+    <!--визначення блоку з ім'ям «заголовок» у тезі <title>-->
     <title>{% block title %} {% endblock %}</title>
+    <script src="{% static 'js/jquery-3.7.0.js' %} " defer></script>
+    {% block script %} {% endblock %}
 </head>
 <body>
     <header>
+        <!--створення посилання із зображенням усередині елемента <div>-->
         <div id="left-header-side">
             <p><a href="{% url 'main' %}"><img class="logo" src="{% static 'images/header-logo.png' %}" alt="Логотип компанії"></a></p>
-            {% if user.is_authenticated %}
+            <!--перевіряє чи автентифікований користувач чи увійшов він у систему.-->
+            {% if user.is_authenticated %}            
             <input type="text" id="search-bar" placeholder="Знайти ваш перший файл...">
             {% endif %}
         </div>
-        
+        <!--створює меню навігації з кількома посиланнями за допомогою тегів шаблону-->
         <div class="navigation_buttons">
             <a href="{% url 'upload_file' %}">Завантажити файли</a>
             <a href="{% url 'about_us' %}">Про нас</a>
@@ -38,15 +46,21 @@
         </div>
         <div class="no_account">
             <a href="{% url 'profile' %}">
+                <!--це умовний оператор у шаблонах-->
                 {% if profile.image %}
+                <!--відображає тег <img> з вихідною URL-адресою та альтернативним текстом на основі profileоб'єкта.-->
                 <img class="image_account" src="{{ profile.image.url }}" alt="Нема аккаунту">
                 {% else %}
+                <!--відображає тег <img> з вихідною URL-адресою та альтернативним текстом на основі profileоб'єкта.-->
                 <img class="image_account" src="{% static 'elipss.png' %}" alt="Нема аккаунту">
+                <!--конец условного блока-->
                 {% endif %}
+                <!--виводить ім'я користувача, пов'язаного з об'єктом profile-->
                 {{ profile.user.username }}
             </a>
         </div>   
     </header>
+    <!--Закриття блок-контенту--->
     {% block content %}{% endblock %}
 </body>
 </html>

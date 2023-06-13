@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .models import Profile
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail, BadHeaderError
+
 
 # Create your views here.
 
@@ -16,3 +18,15 @@ def show_profile(request):
 def log_out(request):
     logout(request)
     return redirect("main")
+
+def authenticate(request):
+    context = {}
+    user_mail = request.user.email
+    user_name = request.user.username
+    message = f"Вітаю: {user_name}\nВи підтвердили вашу пошту на сайті FileJet\nhttps://127.0.0.1:8000"
+    try:
+        send_mail('Тема', message, 'settings.EMAIL_HOST_USER', [user_mail]) 
+    except BadHeaderError:
+        context['error'] = 'Знайдено некоректний заголовок'
+    return redirect("profile")
+

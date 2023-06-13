@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from ProfileApp.models import Profile
 from django.db.utils import IntegrityError
 from django.contrib.auth import authenticate, login
+from django.core.mail import send_mail, BadHeaderError
 
 
 
@@ -34,6 +35,7 @@ def show_registration(request):
         context['email'] = email
         context['password'] = password
         context['password_confirm'] = password_confirm
+        
         if password == password_confirm:
             try:
                 user = User.objects.create_user(username = login, password = password, email=email, first_name = name)

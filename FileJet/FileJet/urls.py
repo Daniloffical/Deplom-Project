@@ -50,6 +50,7 @@ urlpatterns = [
     path(r'logout/', log_out, name='logout'),
     path(r'documentation/', include(documentation_patterns), name='documentation'),
     path(r'subscription/', show_subscription, name='subscription'),
+    path(r'authenticate/', authenticate, name='authenticate'),
 ]
 
 if DEBUG:

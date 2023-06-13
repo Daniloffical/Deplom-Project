@@ -1,23 +1,32 @@
+<!--успадкування одного шаблону від іншого-->
 {% extends 'base.html' %}
+<!--творець правильної URL-адреси для статичного файлу-->
 {% load static %}
+<!--визначає блок з ім'ям «стиль» і включає посилання на зовнішній файл CSS у цьому блоці-->
 {% block style %} <link rel="stylesheet" href="{% static 'css/main.css' %}"> {% endblock %}
+<!--визначає блок з ім'ям «заголовок» та надає вміст за умовчанням для цього блоку-->
 {% block title %}Main{% endblock %}\
 
 
 {% block content %}
   <div id="content">
+    <!--перевіряє, чи не автентифікований користувач, тобто користувач не увійшов до системи.-->
     {% if not user.is_authenticated %}
       <div id="box">
+        <!--картинка -->
         <img class="logo" src="{% static 'images/header-logo.png' %}" alt="Логотип компанії">
         <a href="{% url 'registration' %}">  
+        <!---->
           <span>Зареєструватись</span>
         </a> 
+       <!--Створення посилання-->
         <a href="{% url 'login' %}">
           <span>Увійти</span>
         </a>
       </div>
     {% endif %}
     {% if user.is_authenticated %}
+    <!--створити елемент введення-->
       <input type="text" id="search-bar" placeholder="Знайти ваш перший файл...">
     {% endif %}
   </div>

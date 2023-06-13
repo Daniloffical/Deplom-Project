@@ -3,19 +3,21 @@
 
 {% block style %}<link rel="stylesheet" href="{% static 'css/upload_file.css' %}">{% endblock %}
 {% block title %}{% endblock %}
+{% block script %}<script src="{% static 'js/upload_file.js' %}" defer ></script>{% endblock %}
 
 {% block content %}
     <main>
         <div class="settings_image">
-            <h1>Здесь идет верстка</h1>
-            <!-- <div class="image_design">
-                <img src="{% static 'images/none_page.jpg' %}" alt="">
+            <span id="without-text"><h3>Виберіть файл</h3></span>
+            
+            <div class="image_design">
+                <img id="image-file" src="{% static 'images/none_page.jpg' %}" alt="None">
                 <div class="settings_image_design">
-                    <h3>Назва:</h3>
-                    <h3>Тип:</h3>
-                    <h3>Важить:</h3>
+                    Назва:<h3 id="file-name" ></h3>
+                    Тип:<h3 id="file-type" ></h3>
+                    Важить:<h3 id="file-size" ></h3>
                 </div>
-            </div> -->
+            </div>
         </div>
         <div class="settings">
             
