@@ -5,7 +5,7 @@ from .models import File
 class FileForm(forms.ModelForm):
     class Meta:
         model = File
-        fields = ['file_path', 'name', 'description', 'category', 'private', 'image']
+        fields = ['file_path', 'name', 'description', 'private', 'image']
     
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user','')
