@@ -30,3 +30,7 @@ def show_upload_file(request):
         form = FileForm()
         context["form"] = form
         return render(request, 'upload_file.html', context)
+    
+@login_required(login_url='main')
+def error404(request, exception=None):
+    return render(request, 'error404.html', status=404)

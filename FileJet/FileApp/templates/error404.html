@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}<link rel="stylesheet" href="{% static 'css/error404.css' %}">{% endblock %}
+{% block title %}404{% endblock %}
+
+{% block content %}
+<div id="wrapper">
+    <div id="window-error">
+        <div id="image"><object data="{% static 'images/error404.svg' %}"></object></div>
+        <div id="text-div">
+            <h2 id="error-text">Нажаль, такого файлу вже нема<br>Приносимо свої вибачення</h2>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -29,6 +29,8 @@ from AboutUsApp.views import *
 from SubscriptionApp.views import *
 
 
+
+
 documentation_patterns = [
     path(r'', show_documentation, name='documentation'),
     path(r'accounts',  show_documentation_accounts, name='documentation_account'),
@@ -43,7 +45,7 @@ urlpatterns = [
     path(r'', show_main, name='main'),
     path(r'search/', show_search, name='search'),
     path(r'profile/', show_profile, name='profile'),
-    path(r'file/<int:file_pk>', show_file, name='file'),
+    path(r'file/<int:file_pk>/', show_file, name='file'),
     path(r'upload_file/', show_upload_file, name='upload_file'),
     path(r'registration/', show_registration, name='registration'),
     path(r'login/', show_login, name='login'),
@@ -52,6 +54,8 @@ urlpatterns = [
     path(r'subscription/', show_subscription, name='subscription'),
     path(r'authenticate/', authenticate, name='authenticate'),
 ]
+
+handler404 = "FileApp.views.error404"
 
 if DEBUG:
     urlpatterns += static(MEDIA_URL, document_root = MEDIA_ROOT)
