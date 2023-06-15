@@ -1,46 +1,62 @@
+<!--успадкування одного шаблону від іншого-->
 {% extends 'base.html' %}
+<!--творець правильної URL-адреси для статичного файлу-->
 {% load static %}
-
+<!--створює посилання на зовнішній файл CSS-->
 {% block style %} <link rel="stylesheet" href="{% static 'css/profile.css' %}"> {% endblock %}
 {% block title %}Profile{% endblock %}
-
+<!--це HTML-елемент, що визначає область визначення -->
 {% block content %}
+<!-- керування вмістом веб-сторінки.-->
 <div id="content">
     <div id="profile-menu">
         <div id="profile-picture">
+            <!--перевірка--> 
             {% if profile.image %}
+            <!--використовує це ім'я класу для переважного стилю елемента зображення--> 
             <img class="image_account" src="{{ profile.image.url }}" alt="Нема аккаунту">
+            <!--{% else %} є частиною умовного оператора у шаблонах--> 
             {% else %}
+            <!--використовує це ім'я класу для переважного стилю елемента зображення-->  
             <img class="image_account" src="{% static 'elipss.png' %}" alt="Нема аккаунту">
+            <!--{% endif %}используется для обозначения конца условного блока--> 
             {% endif %}
         </div>
-        <div id="text-info">
+        <div id="text-info"> 
             <div id="name-login">
+                <!--представляет переменную --> 
                 <span>{{ profile.user.first_name }}</span>
                 <span>{{ profile.user.username }}</span>
             </div>
-            <div id="email">
+            <div id="email">\
+                <!--представляет переменную --> 
                 <span>Пошта: {{ profile.user.email }}</span>
             </div>
             <div id="amount-files">
                 <span>Завантажено файлів: 1000</span>
             </div>
             <div id="acception">
-                <span>Користувач не підтверджений</span>
+                <span>Користувач не підтверджений</span>\
+
                 <a href="{% url 'authenticate' %}" id="button-accept-email">Підтвердити!</a>
             </div>
         </div>
+        <!----> 
         <div id="profile-buttons">
             <a href=""><span>Змінити пароль</span></a>
+            <!----> 
             <a href="{% url 'logout' %}"><span>Вийти з акаунту</span></a>
         </div>
     </div>
+    <!----> 
     <div id="profile-content">
+        <!----> 
         <div id="buttons-menu">
             <a href="">Завантажені файли</a>
             <a href="">Ваші повідомлення</a>
             <a href="">Відправлені вам повідомлення</a>
         </div>
+        <!----> 
         <div id="files">
             {% for file in files %}
             <div class="file">

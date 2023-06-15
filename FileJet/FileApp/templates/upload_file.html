@@ -1,29 +1,39 @@
+<!--успадкування одного шаблону від іншого-->
 {% extends 'base.html' %}
+<!--творець правильної URL-адреси для статичного файлу-->
 {% load static %}
-
+<!--створює посилання на зовнішній файл CSS-->
 {% block style %}<link rel="stylesheet" href="{% static 'css/upload_file.css' %}">{% endblock %}
 {% block title %}{% endblock %}
+<!--створює посилання на зовнішній файл CSS-->
 {% block script %}<script src="{% static 'js/upload_file.js' %}" defer ></script>{% endblock %}
 
 {% block content %}
     <main>
+        <!--угруповання та оформлення елементів-->
         <div class="settings_image">
-            <span id="without-text"><h3>Виберіть файл</h3></span>
-            
+            <!--створення кнопки "Вибрати файл"-->
+            <span id="without-text"><h3>Виберіть файл</h3></span>     
             <div class="image_design">
+                <!--створює посилання на зовнішній файл CSS-->
                 <img id="image-file" src="{% static 'images/none_page.jpg' %}" alt="None">
+                <!--створення класу-->
                 <div class="settings_image_design">
-                    <h3>Назва:<span id="file-name"></span></h3>
+                    <!--Ця структура передбачає, що ім'я файлу буде динамічно вставлятися в <span>-->
+                    <h3>Назва:<span id="file-name"></span></h3>                
                     <h3>Тип:<span id="file-type"></span></h3>
                     <h3>Важить:<span id="file-size"></span></h3>
                 </div>
             </div>
         </div>
         <div class="settings">
-            
+            <!--Цей атрибут вказує метод HTTP, який буде використовуватися при надсиланні даних форми. У цьому випадку для методу встановлено значення «post», що означає, що дані форми будуть надіслані в запиті.-->
             <form method="post" enctype="multipart/form-data" id="form" novalidate>
+                <!--захиститися від атак із підробкою міжсайтових запитів-->
                 {% csrf_token %}
+                <!--зображення об'єкта форми у шаблоні у вигляді серії абзаців-->
                 {{ form.as_p }}
+                <input type="hidden" name="category" id="file-category">
                 <div class="send"><button type="submit" class="button_send">Опублікувати</button></div>
             </form>
 

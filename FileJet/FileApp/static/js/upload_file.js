@@ -39,6 +39,9 @@ FileInputTag.addEventListener('change', () => {
     var FileType = FileWholeName.split('.').pop();
     var FileSize = FileInputTag.files[0].size;
     FileSize = bytesToSize(FileSize)
+
+    $("#file-category").val(FileType)
+
     FileNameTag.innerHTML = FileName;
     FileTypeTag.innerHTML = FileType;
     FileSizeTag.innerHTML = FileSize;

@@ -105,12 +105,8 @@
 .order-button:hover{
     background: #43A9B5;
 }
-.li-2{
-    font-size: 12px;
-    hyphens: manual;
-}
 
-.li-3{
-    font-size: 10px;
+.li-1{
+    font-size: small;
     hyphens: manual;
 }

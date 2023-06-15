@@ -17,7 +17,6 @@ def show_file(request, file_pk):
 def show_upload_file(request):
     if request.method == "POST":
         form = FileForm(request.POST, request.FILES)
-
         if form.is_valid():
             form_saved = form.save(commit=False)
             form_saved.user = request.user

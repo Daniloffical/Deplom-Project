@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-o=z+d_30k^5^toadxd+3m8op7ns@wljm9o*yc+_%7^=6&qun$(
 DEBUG = True
 
 # ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -151,7 +151,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_HOST = 'smtp.gmail.com'
 
-EMAIL_HOST_USER = 'file.jet.help@gmail.com'
+EMAIL_HOST_USER = ''
 
 EMAIL_HOST_PASSWORD = 'smrsjyldjbmwzion'
 
