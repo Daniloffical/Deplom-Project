@@ -9,5 +9,25 @@
 
 <!-- керування вмістом веб-сторінки.-->
 {% block content %}
-
+<div id="wrapper">
+    <div id="file">
+        <div id="file-header">
+            <div id="image">
+                <img src="{{ file.image.url }}" alt="{{ file.name }}">
+            </div>
+            <div id="text-info">
+                <h4>{{ file.name }}</h4>
+                <h4>{{ file.private }}</h4>
+            </div>
+        </div>
+        <div id="file-body">
+            <h2 id="description-h2">Опис</h2>
+            <h4 id="description-text">{{ file.description }}</h4>
+        </div>
+        <div id="file-footer">
+            <a href=""></a>
+            <a href=""></a>
+        </div>
+    </div>
+</div>
 {% endblock %}

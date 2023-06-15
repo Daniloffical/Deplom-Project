@@ -8,9 +8,10 @@ from .forms import FileForm
 
 @login_required(login_url='main')
 def show_file(request, file_pk):
+    context={}
     file = get_object_or_404(File, pk=file_pk)
-    print(file)
-    return render(request, 'file.html')
+    context["file"] = file
+    return render(request, 'file.html', context)
 
 @login_required(login_url='main')
 def show_upload_file(request):
