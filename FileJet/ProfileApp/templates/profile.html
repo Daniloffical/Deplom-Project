@@ -15,11 +15,11 @@
             {% if profile.image %}
             <!--використовує це ім'я класу для переважного стилю елемента зображення--> 
             <img class="image_account" src="{{ profile.image.url }}" alt="Нема аккаунту">
-            <!--{% else %} є частиною умовного оператора у шаблонах--> 
+            <!-- є частиною умовного оператора у шаблонах--> 
             {% else %}
             <!--використовує це ім'я класу для переважного стилю елемента зображення-->  
-            <img class="image_account" src="{% static 'elipss.png' %}" alt="Нема аккаунту">
-            <!--{% endif %}используется для обозначения конца условного блока--> 
+            <img class="image_account" src="{% static 'images/unregistrate_user.png' %}" alt="Нема аккаунту">
+            <!--используется для обозначения конца условного блока--> 
             {% endif %}
         </div>
         <div id="text-info"> 
@@ -28,7 +28,7 @@
                 <span>{{ profile.user.first_name }}</span>
                 <span>{{ profile.user.username }}</span>
             </div>
-            <div id="email">\
+            <div id="email">
                 <!--представляет переменную --> 
                 <span>Пошта: {{ profile.user.email }}</span>
             </div>
@@ -36,21 +36,17 @@
                 <span>Завантажено файлів: 1000</span>
             </div>
             <div id="acception">
-                <span>Користувач не підтверджений</span>\
+                <span>Користувач не підтверджений</span>
 
                 <a href="{% url 'authenticate' %}" id="button-accept-email">Підтвердити!</a>
             </div>
         </div>
-        <!----> 
         <div id="profile-buttons">
-            <a href=""><span>Змінити пароль</span></a>
-            <!----> 
+            <a href="{% url 'password_change' %}"><span>Змінити пароль</span></a>
             <a href="{% url 'logout' %}"><span>Вийти з акаунту</span></a>
         </div>
     </div>
-    <!----> 
     <div id="profile-content">
-        <!----> 
         <div id="buttons-menu">
             <a href="">Завантажені файли</a>
             <a href="">Ваші повідомлення</a>
@@ -58,17 +54,21 @@
         </div>
         <!----> 
         <div id="files">
+             <!----> 
             {% for file in files %}
             <div class="file">
                 <div class="file-image">
+                     <!----> 
                     <img src="{{ file.image.url }}" alt="{{ file.name }}">
                 </div>
                 <div class="file-info">
+                     <!----> 
                     <span>{{ file.name }}</span>
+                     <!----> 
                     <span>{{ file.description }}</span>
                 </div>
                 <div class="file-button">
-                    <a class="button-to-file" href=""></a>
+                    <a class="button-to-file" href="{% url 'file' file.pk %}">Перейти</a>
                 </div>
             </div>
             {% endfor %}

@@ -35,3 +35,20 @@ def authenticate(request):
         context['error'] = 'Знайдено некоректний заголовок'
     return redirect("profile")
 
+@login_required(login_url='main')
+def show_password_change(request):
+    context = {}
+    if request.method == 'POST':
+        password = request.POST.get("password")
+        password_confirm = request.POST.get("password-confirm")
+        if password == password_confirm:
+            user = request.user
+            if not user.check_password(password):
+                user.set_password(password)
+                user.save()
+                return redirect('main')
+            else:
+                context['error'] = 'Не можна використовувати існуючий пароль!'
+        else:
+            context['error'] = 'Паролі не співпадають'
+    return render(request, 'password_change.html', context)

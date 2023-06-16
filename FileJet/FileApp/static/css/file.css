@@ -8,8 +8,8 @@
     align-items: center;
     padding: 0px;
     
-    width: 906px;
-    height: 600px;
+    max-width: 60%;
+    max-height: 60%;
     
     background: #F8F8F8;
     /* button 2 */
@@ -26,8 +26,8 @@
     align-items: center;
     padding: 0px;
     
-    width: 906px;
-    height: 227px;
+    width: 100%;
+    height: 35%;
     
     /* button 2 */
     overflow: hidden;
@@ -54,13 +54,17 @@
     align-items: center;
     padding: 0px;
     
-    width: 305px;
-    height: 227px;
+    width: 40%;
+    height: 100%;
     
     /* button 2 */
     overflow: hidden;
 
-    border: 4px solid #3E88EF;
+}
+
+#image img{
+    max-width: 120%;
+    max-height: 120%;
 }
 
 #text-info{
@@ -73,47 +77,45 @@
     
     overflow: hidden;
 
-    width: 601px;
-    height: 227px;
+    width: 60%;
+    height: 100%;
     
     /* button 2 */
     
-    border: 4px solid #3E88EF;
+    border-left: 4px solid #3E88EF;
 }
 
 #file-body{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    padding: 0px 50px 102px 20px;
-    gap: 10px;
     
-    width: 906px;
-    height: 283px;
+    gap: 10px;
+
+    width: 100%;
+    height: 48%;
 }
 
 #file-footer{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 0px 280px;
-    gap: 45px;
+
+    gap: 10%;
     
-    width: 906px;
-    height: 90px;
+    width: 100%;
+    height: 17%;
+
 }
 
 #description-h2{
-    width: 69px;
-    height: 45px;
     
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
     font-size: 30px;
-    line-height: 150%;
     /* identical to box height, or 45px */
     
     display: flex;
@@ -123,15 +125,19 @@
     color: #000000;
 }
 
-#description-text{
-    width: 836px;
-    height: 90px;
+#description-text{  
     
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box; 
+
+    padding: 0 10px;
+    width: 100%;
+
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
-    line-height: 150%;
     /* or 30px */
     
     display: flex;
@@ -146,15 +152,22 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 7px 12px;
+    padding: 7px;
     gap: 10px;
     
-    width: 201px;
-    height: 44px;
-    
+    font-size: 18px;
     /* new button */
     
     background: #1CAEEF;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
     border-radius: 14px;
+}
+
+#text-download{
+    padding: 30px 12px;
+}
+
+#file-footer a img{
+    width: 80%;
+    height: 80%;
 }
