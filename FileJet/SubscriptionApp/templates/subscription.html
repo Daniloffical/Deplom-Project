@@ -6,7 +6,7 @@
 
 {% block content %}
 <div id="content">
-    <span>Тарифи</span>
+    <h2><span>Тарифи</span></h2>
     <div id="subscriptions-list">
         {% for subscription in subscriptions %}
         <div class="subscription-container">
@@ -15,7 +15,7 @@
                 <span>{{ subscription.name }} Тариф</span>
             </div>
             <div class="subscription-body">
-                <ul>
+                <ul class="list-attributes">
                     {% for description in subscription.description %}
                     <li class="li-1">{{ description }}</li>
                     {% endfor %}
@@ -30,42 +30,6 @@
             </div>
         </div>
         {% endfor %}
-        <!-- <div class="subscription-container">
-            <div class="subscription-header">
-                <img src="" alt="">
-                <span>Продвинутий тариф</span>
-            </div>
-            <div class="subscription-body">
-                <ul>
-                    <li class="li-2">Сховище: 50 ГБ</li>
-                    <li class="li-2">Трафік: 500 ГБ в місяць</li>
-                    <li class="li-2">Підтримка: Электрона почта і телефон</li>
-                    <li class="li-2">Додаткові функції: Резервне копіювання, можливість сумісної роботи</li>
-                    <li class="li-2">Ціна: $9.99 в місяць</li>
-                </ul>
-            </div>
-            <div class="subscription-footer">
-                <a class="order-button" href="">Підключити</a>
-            </div>
-        </div>
-        <div class="subscription-container">
-            <div class="subscription-header">
-                <img src="" alt="">
-                <span>Преміум тариф</span>
-            </div>
-            <div class="subscription-body">
-                <ul>
-                    <li class="li-3">Сховище: 100 ГБ</li>
-                    <li class="li-3">Трафік: необмежений</li>
-                    <li class="li-3">Підтримка: Електрона почта, телефон і онлайн-чат</li>
-                    <li class="li-3">Додаткові функції: Резервне копіювання, сумісна робота, управління правами доступу</li>
-                    <li class="li-3">Ціна: $29.99 в місяць</li>
-                </ul>
-            </div>
-            <div class="subscription-footer">
-                <a class="order-button" href="">Підключити</a>
-            </div>
-        </div> -->
     </div>
 </div>
 {% endblock %}
