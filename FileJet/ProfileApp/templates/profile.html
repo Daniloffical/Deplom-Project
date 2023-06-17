@@ -68,7 +68,11 @@
             <div class="file">
                 <div class="file-image">
                      <!----> 
+                    {% if file.image %}
                     <img src="{{ file.image.url }}" alt="{{ file.name }}">
+                    {% else %}
+                    Нема зображення
+                    {% endif %}
                 </div>
                 <div class="file-info">
                      <!----> 

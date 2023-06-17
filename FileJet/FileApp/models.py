@@ -20,12 +20,12 @@ class Category(models.Model):
 
 class File(models.Model):
     file_path = models.FileField(upload_to='files/%Y/%m/%d', max_length=100, null=True, blank=True)
-    name = models.CharField(max_length=255, null=True, blank=True)
-    description = models.TextField(null=True, blank=True)
+    name = models.CharField(max_length=255, default="Безіменний файл")
+    description = models.TextField(default="Опису нема")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     private = models.BooleanField()
     image = models.ImageField(upload_to='image/%Y/%m/%d', null=True, blank=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
 

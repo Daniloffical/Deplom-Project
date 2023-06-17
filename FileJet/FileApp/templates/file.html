@@ -13,19 +13,49 @@
     <div id="file">
         <div id="file-header">
             <div id="image">
+             <!--використовує систему шаблонів, яка підтримує змінний рендеринг-->
+                {% if file.image %}
                 <img src="{{ file.image.url }}" alt="{{ file.name }}">
+                {% else %}
+                <img src="{% static 'images/sad_file.svg' %}" alt="Нема забраження файлу">
+                {% endif %}   
             </div>
             <div id="text-info">
-                <h4>{{ file.name }}</h4>
-                <h4>{{ file.private }}</h4>
+                <div class="file-name">
+                    <h2>Назва:</h2>
+                    <!--Вміст змінної file.name буде замінено та відображено як текст у заголовку.-->
+                    <h4>{{ file.name }}</h4>
+                </div>
+                
+                
+                
+                <div class="file-name">
+                    <h2>Статус:</h2>
+                    <!--Вміст змінної file.private буде замінено та відображено як текст у заголовку. -->
+                    <div id="private-info">
+                        <img src="{% static 'images/lock.svg' %}" alt="Замкнуто">
+                            <h4>{% if file.private %}
+                            Відкрито
+                            {% else %}
+                            Приватно
+                            {% endif %}</h4>
+                    </div>
+                    
+                </div>
+                
             </div>
         </div>
         <div id="file-body">
             <h2 id="description-h2">Опис</h2>
-            <h4 id="description-text">{{ file.description }}</h4>
+            <h4 id="description-text">{% if file.description %}
+                {{ file.description }}
+                {% else %}
+                Нема опису файла!
+                {% endif %}</h4>
         </div>
         <div id="file-footer">
             <a href="" id="text-download">Завантажити файл</a>
+            <!--відображення статичного зображення-->
             <a href=""><img src="{% static 'images/chat_icon.svg' %}" alt=""></a>
         </div>
     </div>
