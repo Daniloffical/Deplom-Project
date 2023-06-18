@@ -10,6 +10,12 @@ class Profile(models.Model):
     #in bytes
     used_size = models.IntegerField(default=0)
 
+    procent_size = models.IntegerField(default=0)
 
-    # def __str__(self):
-    #     return self.user.name
+
+    def __str__(self):
+        return self.user.username
+    
+    def save(self, *args, **kwargs):
+        self.procent_size = int(self.used_size//self.total_size)
+        super(Profile, self).save(*args, **kwargs)

@@ -15,6 +15,7 @@ def show_profile(request):
     profile = Profile.objects.get(user=request.user)
     context['profile'] = profile
     context['files'] = files
+    context['file_amount'] = len(files)
     return render(request, 'profile.html', context)
 
 @login_required(login_url='main')

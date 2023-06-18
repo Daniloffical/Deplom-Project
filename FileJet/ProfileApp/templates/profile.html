@@ -5,6 +5,7 @@
 <!--створює посилання на зовнішній файл CSS-->
 {% block style %} <link rel="stylesheet" href="{% static 'css/profile.css' %}"> {% endblock %}
 {% block title %}Profile{% endblock %}
+{% block script %}<script src="{% static 'js/profile.js' %}" defer></script>{% endblock %}
 <!--це HTML-елемент, що визначає область визначення -->
 {% block content %}
 <!-- керування вмістом веб-сторінки.-->
@@ -33,7 +34,7 @@
                 <span>Пошта: {{ profile.user.email }}</span>
             </div>
             <div id="amount-files">
-                <span>Завантажено файлів: 1000</span>
+                <span>Завантажено файлів:{{ file_amount }}</span>
             </div>
             <div id="acception">
                 <span>Користувач не підтверджений</span>
@@ -49,17 +50,16 @@
     <div id="profile-content">
         <div class="skill-box">
             <span class="title">Місце для файлів: 90/100 MB</span>
-
             <div class="skill-bar">
-                <span class="skill-per html">
+                <span class="skill-per" style="width: {% set procent = (profile.used_size // profile.full_size) * 100 %}%;">
                     <span class="tooltip">90%</span>
                 </span>
             </div>
         </div>
         <div id="buttons-menu">
-            <a href="">Завантажені файли</a>
-            <a href="">Ваші повідомлення</a>
-            <a href="">Відправлені вам повідомлення</a>
+            <button class="button-profile">Завантажені файли</button>
+            <button class="button-profile">Ваші повідомлення</button>
+            <button class="button-profile">Відправлені вам повідомлення</button>
         </div>
         <!----> 
         <div id="files">

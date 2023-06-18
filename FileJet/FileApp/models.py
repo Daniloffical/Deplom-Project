@@ -19,7 +19,7 @@ class Category(models.Model):
         return self.name
 
 class File(models.Model):
-    file_path = models.FileField(upload_to='files/%Y/%m/%d', max_length=100, null=True, blank=True)
+    file_path = models.FileField(upload_to='files/%Y/%m/%d', max_length=255, null=True, blank=True)
     name = models.CharField(max_length=255, default="Безіменний файл")
     description = models.TextField(default="Опису нема")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)

@@ -7,6 +7,8 @@ from FileApp.models import File, Category
 # оператор импорта 
 from .forms import FileForm
 
+from ProfileApp.models import Profile
+
 
 # Create your views he
 #декоратор, що використовується в Django для вказівки того, що функція подання або подання на основі класів потребують аутентифікації
@@ -38,7 +40,16 @@ def show_upload_file(request):
             category = Category.objects.get_or_create(name = request.POST.get("category"))
             #надає значення поля "категорія", отримане зі словника
             form_saved.category = category[0]
-            
+
+
+            file_size = request.POST.get("file-size-bytes")
+            profile = Profile.objects.get(user = request.user)
+
+
+            profile.used_size += int(file_size)
+
+            profile.save()
+
             #используется для сохранения измененных данных формы, 
             form_saved.save()
             #використовується для перенаправлення користувача на певну URL
@@ -60,6 +71,7 @@ def show_upload_file(request):
         context["form"] = form
         #даними та повертає оброблений шаблон у вигляді HTTP-відповіді
         return render(request, 'upload_file.html', context)
+    
 #декоратор, що використовується в Django для вказівки того, що функція подання або подання на основі класів потребують аутентифікації
 @login_required(login_url='main')
 #

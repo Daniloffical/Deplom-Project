@@ -274,13 +274,13 @@
     
 }
 
-#buttons-menu a{
+#buttons-menu .button-profile{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     
-
+    cursor: pointer;
 
 
     /* French Sky Blue */
@@ -289,12 +289,12 @@
 
     background: #61AFF7;
     
-
+    border: none;
     /* Inside auto layout */
     
 }
 
-#buttons-menu a:hover{
+#buttons-menu .button-profile:hover{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -310,7 +310,13 @@
     background: #0C68E8;
     
 
+
     /* Inside auto layout */
+    
+}
+
+#buttons-menu .selected{
+    background: #0836C1;    
 }
 
 #files{
@@ -438,7 +444,6 @@
     position: relative;
     display: block;
     height: 100%;
-    width: 90%;
     border-radius: 6px;
     background: #4070f4;
     animation: progress 0.4s ease-in-out forwards;
