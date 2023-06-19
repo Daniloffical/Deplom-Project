@@ -3,7 +3,7 @@
 <!--творець правильної URL-адреси для статичного файлу-->
 {% load static %}
 <!--створює посилання на зовнішній файл CSS-->
-{% block style %}<link rel="stylesheet" href="{% static 'css/profile.css' %}">{# set procent = (profile.used_size // profile.full_size) * 100 #}{% endblock %}
+{% block style %}<link rel="stylesheet" href="{% static 'css/profile.css' %}">{% endblock %}
 {% block title %}Profile{% endblock %}
 {% block script %}<script src="{% static 'js/profile.js' %}" defer></script>
 <script>
@@ -15,11 +15,30 @@
         document.getElementsByTagName("head")[0].appendChild(css);
     }
     
+    function bytesToSize(bytes) {
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
+        if (bytes === 0) return 'n/a'
+        const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10)
+        if (i === 0) return `${bytes} ${sizes[i]})`
+        return `${(bytes / (1024 ** i)).toFixed(1)} ${sizes[i]}`
+    }    
     // CSS rules
-    let rule  = '.skill-per { width: {{ profile.procent_size }}%; }';
-    
+    let rule = '.skill-per { width: {{ profile.procent_size }}%; }';
     // Load the rules and execute after the DOM loads
-    window.onload = function() {changeWidth(rule)};
+    window.onload = function() {
+        changeWidth(rule)
+        let usedCloudSize = '{{ profile.used_size }}'
+        let totalCloudSize = '{{ profile.total_size }}'
+
+        usedCloudSize = parseInt(usedCloudSize)
+        totalCloudSize = parseInt(totalCloudSize)
+
+        let usedSize = document.querySelector("#used-size")
+        let totalSize = document.querySelector("#total-size")
+
+        usedSize.innerHTML = bytesToSize(usedCloudSize)
+        totalSize.innerHTML = bytesToSize(totalCloudSize)
+    };
 </script>{% endblock %}
 <!--це HTML-елемент, що визначає область визначення -->
 {% block content %}
@@ -64,7 +83,7 @@
     </div>
     <div id="profile-content">
         <div class="skill-box">
-            <span class="title">Місце для файлів: 90/100 MB</span>
+            <span class="title">Місце для файлів: <span id="used-size"></span>/<span id="total-size"></span>    </span>
             <div class="skill-bar">
                 <span class="skill-per">
                     <span class="tooltip">{{ profile.procent_size }}%</span>
