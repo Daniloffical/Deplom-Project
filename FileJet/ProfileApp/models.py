@@ -17,5 +17,5 @@ class Profile(models.Model):
         return self.user.username
     
     def save(self, *args, **kwargs):
-        self.procent_size = int(self.used_size//self.total_size)
+        self.procent_size = int(self.used_size/self.total_size*100)
         super(Profile, self).save(*args, **kwargs)
