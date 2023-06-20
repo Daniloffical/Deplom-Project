@@ -6,12 +6,15 @@
 <!--створює посилання на зовнішній файл CSS-->
 {% block style %}<link rel="stylesheet" href="{% static 'css/file.css' %}">{% endblock %}
 {% block title %}File{% endblock %}
+{% block script %} <script src="{% static 'js/file.js' %}" defer></script> {% endblock %}
 
 <!-- керування вмістом веб-сторінки.-->
 {% block content %}
 <div id="wrapper">
     <div id="file">
         <div id="file-header">
+            <input type="hidden" id="file-owner-pk" value="{{ file.user.pk }}">
+            <input type="hidden" id="file-pk" value="{{ file.pk }}">
             <div id="image">
              <!--використовує систему шаблонів, яка підтримує змінний рендеринг-->
                 {% if file.image %}
@@ -26,23 +29,18 @@
                     <!--Вміст змінної file.name буде замінено та відображено як текст у заголовку.-->
                     <h4>{{ file.name }}</h4>
                 </div>
-                
-                
-                
                 <div class="file-name">
                     <h2>Статус:</h2>
                     <!--Вміст змінної file.private буде замінено та відображено як текст у заголовку. -->
                     <div id="private-info">
+                        <h4>{% if file.private %}
+                        Відкрито
+                        {% else %}
                         <img src="{% static 'images/lock.svg' %}" alt="Замкнуто">
-                            <h4>{% if file.private %}
-                            Відкрито
-                            {% else %}
-                            Приватно
-                            {% endif %}</h4>
+                        Приватно
+                        {% endif %}</h4>
                     </div>
-                    
                 </div>
-                
             </div>
         </div>
         <div id="file-body">
@@ -56,8 +54,104 @@
         <div id="file-footer">
             <a href="" id="text-download">Завантажити файл</a>
             <!--відображення статичного зображення-->
-            <a href=""><img src="{% static 'images/chat_icon.svg' %}" alt=""></a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalSlide"><img src="{% static 'images/chat_icon.svg' %}" alt=""></button>
         </div>
     </div>
 </div>
+
+
+<!-- modal for uploader -->
+{% if is_uploader %}
+<button id="oLModal" onclick="openModal('Modal-uploader')">Open Modal</button>
+<button id="cLModal" class="close" onclick="closeModal('Modal-uploader')">&times;</button>
+<div id="Modal-uploader" class="modal modal_move">
+    <div id="choose-chat-header">Мої чати</div>
+    <div id="chats">
+        <div class="chat">
+            <div class="user-icon"></div>
+            <div class="chat-info"></div>
+            <div class="file-info">
+                <img src="" alt="File image">
+                <span class="file-name"></span>
+            </div>
+            <input type="hidden" value="7">
+        </div>
+        <div class="chat">
+            <div class="user-icon"></div>
+            <div class="chat-info"></div>
+            <div class="file-info">
+                <img src="" alt="File image">
+                <span class="file-name"></span>
+            </div>
+            <input type="hidden" value="8">
+        </div>
+    </div>
+    <div id="chat-content">
+        <div id="chat-header">
+            <span id="chat-name">
+            </span>
+        </div>
+        <div id="chat-messages">
+        </div>
+        <div id="chat-input">
+            <input type="text" name="message-input" id="message-input">
+            <button id="send-button">
+                <img src="{% static 'images/send_button.svg' %}" alt="Send">
+            </button>
+        </div>
+    </div>
+    <input type="hidden" id="chat-pk"></input>
+    <input type="hidden" id="create-message" value="{% url 'create_message' %}">
+    <input type="hidden" id="create-chat" value="{% url 'create_chat' %}">
+    <input type="hidden" id="get-messages" value="{% url 'get_messages' %}">
+</div>
+{% endif %}
+
+
+<!-- Modal -->
+{% if not is_uploader %}
+<button id="oModal" onclick="openModal('Modal-user')">Open Modal</button>
+<button id="cModal" class="close" onclick="closeModal('Modal-user')">&times;</button>
+<div id="Modal-user" class="modal modal_move">
+    <div id="chat-header">
+        <span id="chat-name">
+        </span>
+    </div>
+    <div id="chat-messages">
+        <div class="message-container">
+            <div class="user-icon"></div>
+            <div class="message-cloud">
+                <img src="{% static 'images/bubble_point.svg' %}" alt="Bubble Point" class="point">
+                <div class="message-box">
+                    <span class="message-text">
+
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="message-container right">
+            <div class="user-icon"></div>
+            <div class="message-cloud right">
+                <img src="{% static 'images/bubble_point.svg' %}" alt="Bubble Point" class="point right">
+                <div class="message-box">
+                    <span class="message-text">
+                        hellos
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="chat-input">
+        <input type="text" name="message-input" id="message-input">
+        <button id="send-button">
+            <img src="{% static 'images/send_button.svg' %}" alt="Send">
+        </button>
+    </div>
+    <input type="hidden" id="chat-pk"></input>
+    <input type="hidden" id="create-message" value="{% url 'create_message' %}">
+    <input type="hidden" id="create-chat" value="{% url 'create_chat' %}">
+    <input type="hidden" id="get-messages" value="{% url 'get_messages' %}">
+</div>
+{% endif %}
+
 {% endblock %}

@@ -4,7 +4,6 @@ from django.conf import settings
 
 from django.urls import reverse
 
-from django.forms import ModelForm
 # Create your models here.
 
 
@@ -14,6 +13,7 @@ from django.forms import ModelForm
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
+
 
     def __str__(self):
         return self.name
@@ -33,7 +33,11 @@ class File(models.Model):
         return self.name
     
 class Chat(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, default="chat")
+    send_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="send", default=None)
+    file = models.ForeignKey(File, on_delete=models.CASCADE, default=None)
+    receive_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="receive", default=None)
+
 
 class Message(models.Model):
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)

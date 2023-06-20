@@ -22,7 +22,7 @@ main {
     align-items: center;
     padding: 10px 70px;
     gap: 10px;
-    overflow-y: scroll;
+
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -91,32 +91,6 @@ main {
 }
 
 
-.first_icon{
-    width: 409px;
-    height: 156px;
-}
-
-
-.second_icon{
-    width: 158px;
-    height: 138px;
-}
-.third_icon{
-    width: 197px;
-    height: 196px;
-}
-
-
-.fourth_icon{
-    width: 197px;
-    height: 197px;
-}
-
-
-.fifth_icon{
-    width: 330px;
-    height: 280px;
-}
 
 
 .first_text{
@@ -230,6 +204,7 @@ footer{
     flex: none;
     order: 2;
     flex-grow: 0;
+    margin: 10px;
 }
 
 
@@ -401,3 +376,16 @@ footer{
     order: 0;
     flex-grow: 1;
 }
+
+.right_slide{
+    gap: 100px;
+    width: 50%;
+    height: 100%;
+}
+
+.left_slide{
+    gap: 100px;
+    width: 50%;
+    height: 100%;
+}
+
