@@ -7,8 +7,8 @@
     padding: 38px 10px 10px 1px;
     gap: 28px;
     
-    /* width: 100%;
-    height: 100%; */
+    /* /* width: 100%; */
+    height: 80%;
     
     
     /* Inside auto layout */
@@ -20,7 +20,7 @@
 main {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
     padding: 10px 40px;
     gap: 39px;
     flex: none;
@@ -28,7 +28,7 @@ main {
     flex-grow: 0;
 }
 
-.button_confidentiality{
+.documentation{
     box-sizing: border-box;
 
     /* Auto layout */
@@ -54,60 +54,7 @@ main {
     order: 0;
     flex-grow: 0;
 }
-.button_account {
-    box-sizing: border-box;
 
-    /* Auto layout */
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 24px 20px 21px;
-    gap: 10px;
-
-
-
-    background: #F8F8F8;
-    /* button 2 */
-    
-    border: 4px solid #3E88EF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.32);
-    border-radius: 25px;
-    
-    /* Inside auto layout */
-    
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-}
-.button_file {
-    box-sizing: border-box;
-
-    /* Auto layout */
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 24px 20px 21px;
-    gap: 10px;
-
-
-
-    background: #F8F8F8;
-    /* button 2 */
-    
-    border: 4px solid #3E88EF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.32);
-    border-radius: 25px;
-    
-    /* Inside auto layout */
-    
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-}
 .confidentiality_icon {
     width: 133px;
     height: 133px;

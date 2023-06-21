@@ -29,7 +29,6 @@ main{
 
 #without-text{
     display: flex;
-    width: 100%;
     height: 100%;
     align-items: center;
     justify-content: center;
@@ -68,12 +67,13 @@ form{
 }
 
 .image_design{
+    box-sizing: border-box;
     display: none;
     flex-direction: column;
     align-items: center;
-    padding: 62px 0px;
+    width: 100%;
     gap: 70px;
-    height: 20%;
+    height: 100%;
 
 }
 
@@ -84,7 +84,7 @@ form{
     justify-content: center;
     align-items: flex-start;
     width: 100%;
-    height: 100%;
+    height: 50%;
     gap: 5px;
 }
 
@@ -208,10 +208,12 @@ p:has(> label[for=id_file_path]){
     display: flex;
 }
 #file-name{
-    width: 50px;
-    height: 50px;
-    padding: 100px 10px;
+    word-wrap: break-word;
 }
-/* h3{
-    display: flex;
-} */
+h3{
+    display: inline;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+
+}

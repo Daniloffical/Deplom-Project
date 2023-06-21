@@ -172,8 +172,9 @@
     padding: 7px;
     gap: 10px;
     
+    cursor: pointer;
+
     font-size: 18px;
-    /* new button */
     
     border: none;
     background: #1CAEEF;
@@ -262,6 +263,8 @@
     align-items: center;
     gap: 10px;
     
+    min-height: 9%;
+
     width: 100%;
 }
 
@@ -466,4 +469,12 @@ img.your-logo{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+.file-image-logo{
+    width: 40px;
+    height: 40px;
+    border: #3E88EF solid 2px;
+    border-radius: 15px;
+    
 }

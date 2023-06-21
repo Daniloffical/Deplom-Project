@@ -117,7 +117,7 @@ header #search-bar:focus {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5px 19px;
+    padding: 5px 40px;
 
     width: 78px;
     height: 74px;
@@ -132,11 +132,11 @@ header #search-bar:focus {
 }
 .no_account a{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 5px 19px;
-
+    gap: 7px;
     width: 78px;
     height: 74px;
 
@@ -162,7 +162,7 @@ header #search-bar:focus {
     flex-grow: 0;
     width: 45px;
     height: 45px;
-    
+    border-radius: 100%;
     font-size: 14px;
     font-family: 'Roboto';
     font-style: normal;

@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Profile
-from FileApp.models import File
+from FileApp.models import File, Message, Chat
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, BadHeaderError
 
+from smtplib import SMTPSenderRefused
 
 # Create your views here.
 
@@ -16,6 +17,36 @@ def show_profile(request):
     context['profile'] = profile
     context['files'] = files
     context['file_amount'] = len(files)
+
+
+    chats_to_you = Chat.objects.filter(receive_user = request.user)
+
+    messages_to_profile = []
+   
+    try:
+        for chat in chats_to_you:
+            message_to_profile = Message.objects.filter(chat = chat).order_by('pk').latest('pk')
+            messages_to_profile.append(message_to_profile)
+        context['messages_to_profile'] = messages_to_profile
+    except Message.DoesNotExist:
+        pass
+
+    chats_by_you = Chat.objects.filter(send_user = request.user)
+    
+    messages_by_profile = []
+
+    try:
+        for chat in chats_by_you:
+            message_by_profile = Message.objects.filter(chat = chat).order_by('pk').latest('pk')
+            message_by_profile_user = message_by_profile.user
+            file = chat.file
+            message_by_profile_user_list = [file, message_by_profile_user, message_by_profile]
+            messages_by_profile.append(message_by_profile_user_list)
+
+        context['messages_by_profile'] = messages_by_profile
+    except Message.DoesNotExist:
+        pass
+
     return render(request, 'profile.html', context)
 
 @login_required(login_url='main')
@@ -33,6 +64,8 @@ def authenticate(request):
         send_mail('Тема', message, 'settings.EMAIL_HOST_USER', [user_mail]) 
     except BadHeaderError:
         context['error'] = 'Знайдено некоректний заголовок'
+    except SMTPSenderRefused:
+        context['error'] = 'Неіснуюча пошта'
     return redirect("profile")
 
 @login_required(login_url='main')

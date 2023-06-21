@@ -25,10 +25,29 @@ def show_file(request, file_pk):
     #file додає отриманий Fileоб'єкт (file) у contextсловник з ключем "file". Це дозволяє передати Fileоб'єкт як змінну шаблон для рендерингу або подальшої обробки.
     context["file"] = file
     
-    context["is_uploader"] = False
+    context["is_uploader"] = False  
 
     if file.user == request.user:
         context["is_uploader"] = True
+        chats = Chat.objects.filter(file = file)
+        # context["chats"] = chats
+        chat_and_last_message_list = []
+        for chat in chats:
+            chat_and_last_message = []
+            try:
+                last_message = Message.objects.filter(chat = chat).order_by('pk').latest('pk')
+            except Message.DoesNotExist:
+                last_message = ''
+            profile_image = Profile.objects.get(user = chat.send_user)
+
+            chat_and_last_message.append(profile_image)
+
+            chat_and_last_message.append(last_message)
+
+            chat_and_last_message.append(chat)
+
+            chat_and_last_message_list.append(chat_and_last_message)
+        context["chat_and_last_message_list"] = chat_and_last_message_list
     
     #return render(request, 'file.html', context)' використовується для рендерингу шаблону з ім'ям 'file.html' з наданими даними context і повернення HTTP-відповіді. У Django функція `render()` використовується для рендерингу шаблону з даними контексту та створення HTTP-відповіді, який буде повернутий клієнту
     return render(request, 'file.html', context)
@@ -92,30 +111,39 @@ def show_upload_file(request):
 def error404(request, exception=None):
     return render(request, 'error404.html', status=404)
 
+
+@login_required(login_url='main')
 def create_chat(request):
     if request.method == "GET":
         file_owner_pk = request.GET.get("fileOwnerPk")
         file_pk = request.GET.get("filePk")
-        current_user = request.user
-        file_user = User.objects.get(pk = file_owner_pk)
-        file = File.objects.get(pk = file_pk)
+        chat_pk = request.GET.get("ChatExPk")
+        if chat_pk == '':
+            current_user = request.user
+            file_user = User.objects.get(pk = file_owner_pk)
+            file = File.objects.get(pk = file_pk)
 
-        try:
-            chat_index = Chat.objects.latest('pk').pk
-        except:
-            chat_index = 1
+            try:
+                chat_index = Chat.objects.latest('pk').pk
+            except:
+                chat_index = 1
 
-        chat_name = f"""Chat №{chat_index}"""
-        chat = Chat.objects.get_or_create(send_user = current_user, file = file, receive_user = file_user)
-        if chat[1]:
-            chat = chat[0]
-            chat.name = chat_name
-            chat.save()
+            chat_name = f"""Chat №{chat_index}"""
+            chat = Chat.objects.get_or_create(send_user = current_user, file = file, receive_user = file_user)
+            if chat[1]:
+                chat = chat[0]
+                chat.name = chat_name
+                chat.save()
+            else:
+                chat = chat[0]
+                chat_name = chat.name
         else:
-            chat = chat[0]
+            chat = Chat.objects.get(pk = chat_pk)
             chat_name = chat.name
-        return JsonResponse({"status":chat.name, "chat_pk":chat.pk, "chat_name": chat_name})
+        return JsonResponse({"chat_pk":chat.pk, "chat_name": chat_name})
 
+
+@login_required(login_url='main')
 def create_message(request):
     if request.method == "GET":
         message_content = request.GET.get("messageContent")
@@ -123,13 +151,20 @@ def create_message(request):
 
         chat = Chat.objects.get(pk = chat_pk)
 
+
+        is_uploader = False
+        if chat.receive_user == request.user:
+            is_uploader = True
+
         message = Message.objects.create(chat = chat, user = request.user, message = message_content)
         message.save()
         message_user = Profile.objects.get(user = request.user)
         message_user_image = message_user.image.url
 
-        return JsonResponse({"chat_name":chat.name, "user_image":message_user_image, "message":message_content})
-    
+        return JsonResponse({"chat_name":chat.name, "user_image":message_user_image, "message":message_content, "is_uploader": is_uploader})
+
+
+@login_required(login_url='main')
 def get_messages(request):
     if request.method == "GET":
         chat_pk = request.GET.get("chatPk")
@@ -137,7 +172,9 @@ def get_messages(request):
         messages = Message.objects.filter(chat = chat).values()
         messages = list(messages)
 
-        send_profile = Profile.objects.get(user = request.user)
+        send_user = request.user
+
+        send_profile = Profile.objects.get(user = chat.send_user)
 
         send_profile_pk = send_profile.user.pk
 
@@ -155,5 +192,5 @@ def get_messages(request):
         users = [send_profile_image_path, receive_profile_image_path]
 
         users_pks = [send_profile_pk, receive_profile_pk]
-
+        print(users_pks, users)
         return JsonResponse({"messages":messages, "users": users, "users_pks": users_pks})

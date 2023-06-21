@@ -24,7 +24,7 @@ class File(models.Model):
     description = models.TextField(default="Опису нема")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     private = models.BooleanField()
-    image = models.ImageField(upload_to='image/%Y/%m/%d', null=True, blank=True)
+    image = models.ImageField(upload_to='image/%Y/%m/%d', default="file_preview.png")
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 

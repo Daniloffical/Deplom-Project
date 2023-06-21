@@ -1,6 +1,9 @@
 function openModal(mod_name) {
   var modal = document.getElementById(mod_name);
 
+  $("#oLModal").attr("onclick","closeModal('Modal-uploader')");
+  $("#oModal").attr("onclick","closeModal('Modal-user')");
+
   // Add open class to make visible and trigger animation
   modal.classList.add('open');
 }
@@ -11,7 +14,10 @@ function closeModal(mod_name) {
   } 
   else{
     var modal = document.getElementById(mod_name);
-    // Remove open class to hide and trigger animation
+    
+    $("#oLModal").attr("onclick","openModal('Modal-uploader')");
+    $("#oModal").attr("onclick","openModal('Modal-user')");
+
     modal.classList.remove('open');
   }
 }
@@ -43,16 +49,72 @@ function  swapChatList(){
 
 $(".chat").on("click", function () {
   swapChatList()
-  let fileUserPk = $(this).find("input").val();
+  let ChatExPk = $(this).find("input").val();
   let filePk = $("#file-pk").val();
-  loadChat(fileUserPk, filePk);
+  loadChat(null, filePk, ChatExPk);
 })
 
-function loadChat(fileOwnerPk, filePk) {
+
+
+
+function getMessages () {
+  $.ajax({
+    url:$("#get-messages").val(),
+    method: 'get',
+    data: {
+      chatPk: chatPk,
+    },
+    success: function(data){
+      $("#chat-messages").empty()
+      messagesContainer = $("#chat-messages")
+      for (let key in data.messages) {
+        
+        if (data.users_pks[0] === data.messages[key].user_id){
+          let messageHtml =`<div class="message-container">
+                              <div class="user-icon"><img src="${data.users[0]}" alt="Your profile picture" class="your-logo"></div>
+                                <div class="message-cloud">
+                                  <img src="/static/images/bubble_point.svg" alt="Bubble Point" class="point">
+                                  <div class="message-box">
+                                    <span class="message-text">
+                                    ${data.messages[key].message}
+                                    </span>
+                                </div>
+                              </div>
+                            </div>`
+          messagesContainer.append(messageHtml);
+        }
+
+        else if (data.users_pks[1] === data.messages[key].user_id){
+          let messageRightHtml =`<div class="message-container right">
+                            <div class="user-icon"><img src="${data.users[1]}" alt="Your profile picture" class="your-logo"></div>
+                              <div class="message-cloud right">
+                                <img src="/static/images/bubble_point.svg" alt="Bubble Point" class="point right">
+                                <div class="message-box">
+                                  <span class="message-text">
+                                  ${data.messages[key].message}
+                                  </span>
+                              </div>
+                            </div>
+                          </div>`
+          messagesContainer.append(messageRightHtml);
+        }
+        
+      };
+    }
+  });
+}
+
+
+
+
+
+
+function loadChat(fileOwnerPk, filePk, ChatExPk=null) {
   $.ajax({
     url:$("#create-chat").val(),
     method: 'get',
     data: {
+      ChatExPk: ChatExPk,
       fileOwnerPk: fileOwnerPk,
       filePk: filePk,
     },
@@ -61,52 +123,7 @@ function loadChat(fileOwnerPk, filePk) {
       $("#chat-pk").val(data.chat_pk)
 	    $("#chat-name").html(data.chat_name)
     },
-    complete: function (data) {
-      $.ajax({
-        url:$("#get-messages").val(),
-        method: 'get',
-        data: {
-          chatPk: chatPk,
-        },
-        success: function(data){
-          $("#chat-messages").empty()
-          messagesContainer = $("#chat-messages")
-          for (let key in data.messages) {
-            
-            if (data.users_pks[0] === data.messages[key].user_id){
-              let messageHtml =`<div class="message-container">
-                                  <div class="user-icon"><img src="${data.users[0]}" alt="Your profile picture" class="your-logo"></div>
-                                    <div class="message-cloud">
-                                      <img src="/static/images/bubble_point.svg" alt="Bubble Point" class="point">
-                                      <div class="message-box">
-                                        <span class="message-text">
-                                        ${data.messages[key].message}
-                                        </span>
-                                    </div>
-                                  </div>
-                                </div>`
-              messagesContainer.append(messageHtml);
-            }
-
-            else if (data.users_pks[1] === data.messages[key].user_id){
-              let messageRightHtml =`<div class="message-container right">
-                                <div class="user-icon"><img src="${data.users[1]}" alt="Your profile picture" class="your-logo"></div>
-                                  <div class="message-cloud right">
-                                    <img src="/static/images/bubble_point.svg" alt="Bubble Point" class="point right">
-                                    <div class="message-box">
-                                      <span class="message-text">
-                                      ${data.messages[key].message}
-                                      </span>
-                                  </div>
-                                </div>
-                              </div>`
-              messagesContainer.append(messageRightHtml);
-            }
-            
-          };
-        }
-      });
-    }
+    complete: getMessages,
   });
   
 }
@@ -124,7 +141,12 @@ $("#send-button").on("click", function(){
       chatPk: chatPk,
     },
     success: function(data){
-	    let messageHtml =`<div class="message-container"><div class="user-icon"><img src="${data.user_image}" alt="Your profile picture" class="your-logo"></div><div class="message-cloud"><img src="/static/images/bubble_point.svg" alt="Bubble Point" class="point"><div class="message-box"><span class="message-text">${data.message}</span></div></div></div>`
+	    if (data.is_uploader === true){
+        var messageHtml =`<div class="message-container right"><div class="user-icon"><img src="${data.user_image}" alt="Your profile picture" class="your-logo"></div><div class="message-cloud right"><img src="/static/images/bubble_point.svg" alt="Bubble Point" class="point right"><div class="message-box"><span class="message-text">${data.message}</span></div></div></div>`
+      }
+      else{
+        var messageHtml =`<div class="message-container"><div class="user-icon"><img src="${data.user_image}" alt="Your profile picture" class="your-logo"></div><div class="message-cloud"><img src="/static/images/bubble_point.svg" alt="Bubble Point" class="point"><div class="message-box"><span class="message-text">${data.message}</span></div></div></div>`
+      }
       messagesContainer.append(messageHtml);;
     }
   })

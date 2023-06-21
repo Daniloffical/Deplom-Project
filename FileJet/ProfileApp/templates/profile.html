@@ -83,24 +83,24 @@
     </div>
     <div id="profile-content">
         <div class="skill-box">
-            <span class="title">Місце для файлів: <span id="used-size"></span>/<span id="total-size"></span>    </span>
             <div class="skill-bar">
                 <span class="skill-per">
                     <span class="tooltip">{{ profile.procent_size }}%</span>
                 </span>
             </div>
+            <span class="title">Місце для файлів: <span id="used-size"></span>/<span id="total-size"></span></span>
         </div>
         <div id="buttons-menu">
-            <button class="button-profile">Завантажені файли</button>
-            <button class="button-profile">Ваші повідомлення</button>
-            <button class="button-profile">Відправлені вам повідомлення</button>
+            <button class="button-profile selected"  value="files">Завантажені файли</button>
+            <button class="button-profile" value="your-messages">Ваші повідомлення</button>
+            <button class="button-profile" value="messages-to-you">Відправлені вам повідомлення</button>
         </div>
         <!----> 
-        <div id="files">
+        <div class="change-section" id="files">
              <!----> 
             {% for file in files %}
-            <div class="file">
-                <div class="file-image">
+            <div class="box">
+                <div class="box-image">
                      <!----> 
                     {% if file.image %}
                     <img src="{{ file.image.url }}" alt="{{ file.name }}">
@@ -108,17 +108,41 @@
                     Нема зображення
                     {% endif %}
                 </div>
-                <div class="file-info">
+                <div class="box-info">
                      <!----> 
                     <span>{{ file.name }}</span>
                      <!----> 
                     <span>{{ file.description }}</span>
                 </div>
-                <div class="file-button">
-                    <a class="button-to-file" href="{% url 'file' file.pk %}">Перейти</a>
-                </div>
+                
+                    <a class="button-to-box" href="{% url 'file' file.pk %}">Перейти</a>
+                
             </div>
             {% endfor %}
+        </div>
+        <div class="change-section" id="your-messages">
+            {% for list in messages_by_profile %}
+            <div class="box">
+                {% for value in list %}
+                    {% if value.category is not defined  %}
+                        <div class="box-image">
+                           <img src="{{ value.image.url }}" alt="{{ value.name }}">
+                        </div>
+                    {% elif value. is not defined %}
+                        <div class="box-info">
+                            <span>{{ message.user }}</span>
+                            <span>{{ message.message }}</span>
+                        </div>
+                    {% if value.category is not defined  %}
+                        <a class="button-to-box" href="{# url 'file' value.pk #}">Перейти</a>
+                    {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="change-section" id="messages-to-you">
+
         </div>
     </div>
 </div>
