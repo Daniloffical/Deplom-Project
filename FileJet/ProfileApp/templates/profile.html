@@ -92,8 +92,8 @@
         </div>
         <div id="buttons-menu">
             <button class="button-profile selected"  value="files">Завантажені файли</button>
-            <button class="button-profile" value="your-messages">Ваші повідомлення</button>
-            <button class="button-profile" value="messages-to-you">Відправлені вам повідомлення</button>
+            <button class="button-profile" value="your-messages">Ваші чати</button>
+            <button class="button-profile" value="messages-to-you">Чати файлів</button>
         </div>
         <!----> 
         <div class="change-section" id="files">
@@ -128,21 +128,39 @@
                         <div class="box-image">
                            <img src="{{ value.image.url }}" alt="{{ value.name }}">
                         </div>
-                    {% elif value. is not defined %}
+                    {% else %}
                         <div class="box-info">
-                            <span>{{ message.user }}</span>
-                            <span>{{ message.message }}</span>
+                            <span>{{ value }}</span>
                         </div>
+                    {% endif %}
                     {% if value.category is not defined  %}
-                        <a class="button-to-box" href="{# url 'file' value.pk #}">Перейти</a>
+                        <a class="button-to-box" href="{% url 'file' value.pk %}">Перейти</a>
                     {% endif %}
-                    {% endif %}
+                    
                 {% endfor %}
             </div>
             {% endfor %}
         </div>
         <div class="change-section" id="messages-to-you">
-
+            {% for list in messages_to_profile %}
+            <div class="box">
+                {% for value in list %}
+                    {% if value.category is not defined  %}
+                        <div class="box-image">
+                           <img src="{{ value.image.url }}" alt="{{ value.name }}">
+                        </div>
+                    {% else %}
+                        <div class="box-info">
+                            <span>{{ value }}</span>
+                        </div>
+                    {% endif %}
+                    {% if value.category is not defined  %}
+                        <a class="button-to-box" href="{% url 'file' value.pk %}">Перейти</a>
+                    {% endif %}
+                    
+                {% endfor %}
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>

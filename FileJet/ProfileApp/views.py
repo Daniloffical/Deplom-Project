@@ -26,7 +26,15 @@ def show_profile(request):
     try:
         for chat in chats_to_you:
             message_to_profile = Message.objects.filter(chat = chat).order_by('pk').latest('pk')
-            messages_to_profile.append(message_to_profile)
+            message_to_profile_user = message_to_profile.user
+            file = chat.file
+
+
+            message = f"{chat.name} {message_to_profile_user.username}: {message_to_profile.message}"
+
+            message_to_profile_user_list = [file, message]
+            messages_to_profile.append(message_to_profile_user_list)
+
         context['messages_to_profile'] = messages_to_profile
     except Message.DoesNotExist:
         pass
@@ -40,7 +48,11 @@ def show_profile(request):
             message_by_profile = Message.objects.filter(chat = chat).order_by('pk').latest('pk')
             message_by_profile_user = message_by_profile.user
             file = chat.file
-            message_by_profile_user_list = [file, message_by_profile_user, message_by_profile]
+
+
+            message = f"{chat.name} {message_by_profile_user.username}: {message_by_profile.message}"
+
+            message_by_profile_user_list = [file, message]
             messages_by_profile.append(message_by_profile_user_list)
 
         context['messages_by_profile'] = messages_by_profile

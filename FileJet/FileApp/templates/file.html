@@ -57,7 +57,7 @@
             {% if is_uploader %}
             <button id="oLModal" onclick="openModal('Modal-uploader')"><img src="{% static 'images/chat_icon.svg' %}" alt="Чат"></button>
             {% elif not is_uploader %}
-            <button id="oModal" onclick="openModal('Modal-user')">Open Modal</button>
+            <button id="oModal" onclick="openModal('Modal-user')"><img src="{% static 'images/chat_icon.svg' %}" alt="Чат"></button>
             {% endif %}
         </div>
     </div>
