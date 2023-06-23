@@ -5,13 +5,14 @@
     {% load base %}
     <!--управления логикой шаблона-->
     {% give_user request as profile %}
+
+    {% give_chats request as chat_and_last_message_list %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--создания URL-адреса статического файла на основе конфигурации-->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    
     {% block icon %} {% endblock %}
     <!--который устанавливает фоновое изображение элемента <body>с помощью ссылки на статический файл Django -->
     <style>
@@ -26,7 +27,8 @@
     {% block style %} {% endblock %}
     <!--визначення блоку з ім'ям «заголовок» у тезі <title>-->
     <title>{% block title %} {% endblock %}</title>
-    <script src="{% static 'js/jquery-3.7.0.js' %} " defer></script>
+    <script src="{% static 'js/jquery-3.7.0.js' %}" defer></script>
+    <script src="{% static 'js/base.js' %}" defer></script>
     {% block script %} {% endblock %}
 </head>
 <body>
@@ -47,6 +49,7 @@
             <a href="{% url 'subscription' %}">Підписки</div></a>
         </div>
         <div class="no_account">
+            <button id="header-modal-button" onclick="openModal('header-modal')"><img src="{% static 'images/chat_icon.svg' %}" alt="Чат"></button>
             <a href="{% url 'profile' %}">
                 <!--це умовний оператор у шаблонах-->
                 {% if profile.image %}
@@ -62,7 +65,51 @@
             </a>
         </div>   
     </header>
-    <!--Закриття блок-контенту--->
+    <div id="header-modal" class="modal modal_move">
+        <div id="choose-chat-header">Мої чати</div>
+        <div id="chats">
+            {% for list in chat_and_last_message_list %}
+            <div class="chat">
+                {% for value in list %}
+                    {% if value.image is not defined %}
+                        <div class="user-icon"><img class="your-logo" src="{{ value.image.url }}" alt=""></div>
+                    {% elif value.message is not defined or value == '' %}
+                        {% if value == '' %}
+                            <div class="chat-info">Ще нема сповіщень від цього користувача</div>
+                        {% else %}
+                            <div class="chat-info"><span>{{ value.user.username }}</span><span>{{ value.message }}</span></div>
+                        {% endif %}
+                    {% elif value.file is not defined %}
+                        <div class="file-info">
+                            <img src="{{ value.file.image.url }}" alt="File image" class="file-image-logo">
+                            <span class="file-name">{{ value.file.name }}</span>
+                        </div>
+                        <input type="hidden" value="{{ value.pk }}">
+                    {% endif %}
+                    
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        <div id="chat-content">
+            <div id="chat-header">
+                <span id="chat-name">
+                </span>
+            </div>
+            <div id="chat-messages">
+            </div>
+            <div id="chat-input">
+                <input type="text" name="message-input" id="message-input">
+                <button id="send-button">
+                    <img src="{% static 'images/send_button.svg' %}" alt="Send">
+                </button>
+            </div>
+        </div>
+        <input type="hidden" id="chat-pk"></input>
+        <input type="hidden" id="create-message" value="{% url 'create_message' %}">
+        <input type="hidden" id="create-chat" value="{% url 'create_chat' %}">
+        <input type="hidden" id="get-messages" value="{% url 'get_messages' %}">
+    </div>
     {% block content %}{% endblock %}
 </body>
 </html>

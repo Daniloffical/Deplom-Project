@@ -92,20 +92,6 @@
         </div>
         {% endfor %}
     </div>
-    <div id="chat-content">
-        <div id="chat-header">
-            <span id="chat-name">
-            </span>
-        </div>
-        <div id="chat-messages">
-        </div>
-        <div id="chat-input">
-            <input type="text" name="message-input" id="message-input">
-            <button id="send-button">
-                <img src="{% static 'images/send_button.svg' %}" alt="Send">
-            </button>
-        </div>
-    </div>
     <input type="hidden" id="chat-pk"></input>
     <input type="hidden" id="create-message" value="{% url 'create_message' %}">
     <input type="hidden" id="create-chat" value="{% url 'create_chat' %}">

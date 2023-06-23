@@ -1,8 +1,7 @@
 function openModal(mod_name) {
   var modal = document.getElementById(mod_name);
 
-  $("#file-footer #oLModal").attr("onclick","closeModal('Modal-uploader')");
-  $("#file-footer #oModal").attr("onclick","closeModal('Modal-user')");
+  $("#file-footer #header-modal-button").attr("onclick","closeModal('header-modal')");
 
   // Add open class to make visible and trigger animation
   modal.classList.add('open');
@@ -15,23 +14,13 @@ function closeModal(mod_name) {
   else{
     var modal = document.getElementById(mod_name);
     
-    $("#file-footer #oLModal").attr("onclick","openModal('Modal-uploader')");
-    $("#file-footer #oModal").attr("onclick","openModal('Modal-user')");
+    $("#file-footer #header-modal-button").attr("onclick","openModal('header-modal')");
 
     modal.classList.remove('open');
   }
 }
 
 var chatPk;
-
-$("#oModal").on("click", loadStandartChat)
-
-function loadStandartChat(){
-  let fileOwnerPk = $("#file-owner-pk").val();
-  let filePk = $("#file-pk").val();
-  
-  loadChat(fileOwnerPk, filePk)
-}
 
 function  swapChatList(){
   if ($("#chat-content").css("display") == "flex"){
@@ -121,7 +110,7 @@ function loadChat(fileOwnerPk, filePk, ChatExPk=null) {
     success: function(data){
       chatPk = data.chat_pk;
       $("#chat-pk").val(data.chat_pk)
-	    $("#chat-name").html(data.chat_name)
+        $("#chat-name").html(data.chat_name)
     },
     complete: getMessages,
   });
@@ -141,7 +130,7 @@ $("#send-button").on("click", function(){
       chatPk: chatPk,
     },
     success: function(data){
-	    if (data.is_uploader === true){
+        if (data.is_uploader === true){
         var messageHtml =`<div class="message-container right"><div class="user-icon"><img src="${data.user_image}" alt="Your profile picture" class="your-logo"></div><div class="message-cloud right"><img src="/static/images/bubble_point.svg" alt="Bubble Point" class="point right"><div class="message-box"><span class="message-text">${data.message}</span></div></div></div>`
       }
       else{
