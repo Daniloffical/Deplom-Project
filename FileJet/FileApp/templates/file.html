@@ -67,7 +67,7 @@
 <!-- modal for uploader -->
 {% if is_uploader %}
 <div id="Modal-uploader" class="modal modal_move">
-    <div id="choose-chat-header">Мої чати</div>
+    <div id="choose-chat-header"><button id="header-modal-button" onclick="closeModal('Modal-uploader')">&Cross;</button>Мої чати</div>
     <div id="chats">
         {% for list in chat_and_last_message_list %}
         <div class="chat">
@@ -92,10 +92,23 @@
         </div>
         {% endfor %}
     </div>
+    <div id="chat-content">
+        <div id="chat-header">
+            <button id="header-modal-button" onclick="closeModal('Modal-uploader')">&Cross;</button>
+            <div id="chat-header-name">
+                <span id="chat-name"></span>
+            </div>
+        </div>
+        <div id="chat-messages">
+        </div>
+        <div id="chat-input">
+            <input type="text" name="message-input" id="message-input">
+            <button id="send-button">
+                <img src="{% static 'images/send_button.svg' %}" alt="Send">
+            </button>
+        </div>
+    </div>
     <input type="hidden" id="chat-pk"></input>
-    <input type="hidden" id="create-message" value="{% url 'create_message' %}">
-    <input type="hidden" id="create-chat" value="{% url 'create_chat' %}">
-    <input type="hidden" id="get-messages" value="{% url 'get_messages' %}">
 </div>
 {% endif %}
 
@@ -104,32 +117,10 @@
 {% if not is_uploader %}
 <div id="Modal-user" class="modal modal_move">
     <div id="chat-header">
-        <span id="chat-name">
-        </span>
+        <div id="choose-chat-header"><button id="header-modal-button" onclick="closeModal('Modal-user')">&Cross;</button><span id="chat-name"></span></div>
     </div>
     <div id="chat-messages">
-        <div class="message-container">
-            <div class="user-icon"></div>
-            <div class="message-cloud">
-                <img src="{% static 'images/bubble_point.svg' %}" alt="Bubble Point" class="point">
-                <div class="message-box">
-                    <span class="message-text">
-
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="message-container right">
-            <div class="user-icon"></div>
-            <div class="message-cloud right">
-                <img src="{% static 'images/bubble_point.svg' %}" alt="Bubble Point" class="point right">
-                <div class="message-box">
-                    <span class="message-text">
-                        hellos
-                    </span>
-                </div>
-            </div>
-        </div>
+        
     </div>
     <div id="chat-input">
         <input type="text" name="message-input" id="message-input">
@@ -138,9 +129,6 @@
         </button>
     </div>
     <input type="hidden" id="chat-pk"></input>
-    <input type="hidden" id="create-message" value="{% url 'create_message' %}">
-    <input type="hidden" id="create-chat" value="{% url 'create_chat' %}">
-    <input type="hidden" id="get-messages" value="{% url 'get_messages' %}">
 </div>
 {% endif %}
 

@@ -6,7 +6,7 @@
     <!--управления логикой шаблона-->
     {% give_user request as profile %}
 
-    {% give_chats request as chat_and_last_message_list %}
+    {% give_chats request as chat_and_last_message_list_header %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,9 +37,6 @@
         <div id="left-header-side">
             <p><a href="{% url 'main' %}"><img class="logo" src="{% static 'images/header-logo.png' %}" alt="Логотип компанії"></a></p>
             <!--перевіряє чи автентифікований користувач чи увійшов він у систему.-->
-            {% if user.is_authenticated %}            
-            <input type="text" id="search-bar" placeholder="Знайти ваш перший файл...">
-            {% endif %}
         </div>
         <!--створює меню навігації з кількома посиланнями за допомогою тегів шаблону-->
         <div class="navigation_buttons">
@@ -49,8 +46,9 @@
             <a href="{% url 'subscription' %}">Підписки</div></a>
         </div>
         <div class="no_account">
-            <button id="header-modal-button" onclick="openModal('header-modal')"><img src="{% static 'images/chat_icon.svg' %}" alt="Чат"></button>
+            <button id="header-modal-button" onclick="openModalHeader('header-modal')"><img src="{% static 'images/chat_icon.svg' %}" alt="Чат"></button>
             <a href="{% url 'profile' %}">
+                {{ profile.user.username }}
                 <!--це умовний оператор у шаблонах-->
                 {% if profile.image %}
                 <!--відображає тег <img> з вихідною URL-адресою та альтернативним текстом на основі profileоб'єкта.-->
@@ -61,28 +59,28 @@
                 <!--конец условного блока-->
                 {% endif %}
                 <!--виводить ім'я користувача, пов'язаного з об'єктом profile-->
-                {{ profile.user.username }}
+                
             </a>
         </div>   
     </header>
-    <div id="header-modal" class="modal modal_move">
-        <div id="choose-chat-header">Мої чати</div>
-        <div id="chats">
-            {% for list in chat_and_last_message_list %}
-            <div class="chat">
+    <div id="header-modal" class="modal-header modal_move-header">
+        <div id="H-chats-header"><button class="H-modal-button" onclick="closeModalHeader('header-modal')">&Cross;</button>Мої чати</div>
+        <div id="H-chats">
+            {% for list in chat_and_last_message_list_header %}
+            <div class="H-chat">
                 {% for value in list %}
                     {% if value.image is not defined %}
-                        <div class="user-icon"><img class="your-logo" src="{{ value.image.url }}" alt=""></div>
+                        <div class="H-user-icon"><img class="H-your-logo" src="{{ value.image.url }}" alt=""></div>
                     {% elif value.message is not defined or value == '' %}
                         {% if value == '' %}
-                            <div class="chat-info">Ще нема сповіщень від цього користувача</div>
+                            <div class="H-chat-info">Ще нема сповіщень від цього користувача</div>
                         {% else %}
-                            <div class="chat-info"><span>{{ value.user.username }}</span><span>{{ value.message }}</span></div>
+                            <div class="H-chat-info"><span>{{ value.user.username }}</span><span>{{ value.message }}</span></div>
                         {% endif %}
                     {% elif value.file is not defined %}
-                        <div class="file-info">
-                            <img src="{{ value.file.image.url }}" alt="File image" class="file-image-logo">
-                            <span class="file-name">{{ value.file.name }}</span>
+                        <div class="H-file-info">
+                            <img src="{{ value.file.image.url }}" alt="File image" class="H-file-image-logo">
+                            <span class="H-file-name">{{ value.file.name }}</span>
                         </div>
                         <input type="hidden" value="{{ value.pk }}">
                     {% endif %}
@@ -91,16 +89,18 @@
             </div>
             {% endfor %}
         </div>
-        <div id="chat-content">
-            <div id="chat-header">
-                <span id="chat-name">
-                </span>
+        <div id="H-chat-content">
+            <div id="H-chat-header">
+                <button class="H-modal-button" onclick="closeModalHeader('header-modal')">&Cross;</button>
+                <div id="H-chat-header-name">
+                    <span id="H-chat-name"></span>
+                </div>
             </div>
-            <div id="chat-messages">
+            <div id="H-chat-messages">
             </div>
-            <div id="chat-input">
-                <input type="text" name="message-input" id="message-input">
-                <button id="send-button">
+            <div id="H-chat-input">
+                <input type="text" name="message-input" id="H-message-input">
+                <button id="H-send-button">
                     <img src="{% static 'images/send_button.svg' %}" alt="Send">
                 </button>
             </div>

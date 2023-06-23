@@ -1,8 +1,6 @@
 function openModal(mod_name) {
   var modal = document.getElementById(mod_name);
 
-  $("#file-footer #oLModal").attr("onclick","closeModal('Modal-uploader')");
-  $("#file-footer #oModal").attr("onclick","closeModal('Modal-user')");
 
   // Add open class to make visible and trigger animation
   modal.classList.add('open');
@@ -15,8 +13,6 @@ function closeModal(mod_name) {
   else{
     var modal = document.getElementById(mod_name);
     
-    $("#file-footer #oLModal").attr("onclick","openModal('Modal-uploader')");
-    $("#file-footer #oModal").attr("onclick","openModal('Modal-user')");
 
     modal.classList.remove('open');
   }
