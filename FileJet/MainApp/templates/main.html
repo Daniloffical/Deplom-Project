@@ -2,6 +2,7 @@
 {% extends 'base.html' %}
 <!--творець правильної URL-адреси для статичного файлу-->
 {% load static %}
+{% block icon %}<link rel="shortcut icon" href="{% static 'images/main.ico' %}" type="image/x-icon">{% endblock %}
 <!--визначає блок з ім'ям «стиль» і включає посилання на зовнішній файл CSS у цьому блоці-->
 {% block style %} <link rel="stylesheet" href="{% static 'css/main.css' %}"> {% endblock %}
 <!--визначає блок з ім'ям «заголовок» та надає вміст за умовчанням для цього блоку-->
@@ -27,7 +28,10 @@
     {% endif %}
     {% if user.is_authenticated %}
     <!--створити елемент введення-->
-      <input type="text" id="search-bar" placeholder="Знайти ваш перший файл...">
+      <form method="post">
+        {% csrf_token %}
+        <input type="text" id="search-bar" placeholder="Знайти ваш перший файл..." name="search-content">
+      </form>
     {% endif %}
   </div>
 {% endblock %}

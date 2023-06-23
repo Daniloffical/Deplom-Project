@@ -1,9 +1,29 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block style %}{% endblock %}
-{% block title %}{% endblock %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/search.css' %}"> {% endblock %}
+{% block title %}Search result{% endblock %}
 
 {% block content %}
-
+<div id="content">
+    <div id="search-bar-box">
+        <form action="" method="post">
+            {% csrf_token %}
+            <input name="searched" type="text" id="search-bar" placeholder="Знайти ваш перший файл...">
+        </form>
+    </div>
+    <div id="files">
+        {% for file in files %}
+        <div class="file">
+            <div class="file-image">
+                <img src="{{ file.image.url }}" alt="" class="file-preview">
+            </div>
+            <div class="file-name">
+                {{ file.name }}
+            </div>
+            <a href="{% url 'file' file.pk %}" class="file-link">Перейти</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

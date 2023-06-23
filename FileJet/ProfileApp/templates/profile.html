@@ -4,6 +4,7 @@
 {% load static %}
 <!--створює посилання на зовнішній файл CSS-->
 {% block style %}<link rel="stylesheet" href="{% static 'css/profile.css' %}">{% endblock %}
+{% block icon %}<link rel="shortcut icon" href="{% static 'images/profile.ico' %}" type="image/x-icon">{% endblock %}
 {% block title %}Profile{% endblock %}
 {% block script %}<script src="{% static 'js/profile.js' %}" defer></script>
 <script>

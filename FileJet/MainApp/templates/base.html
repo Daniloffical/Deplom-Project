@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--создания URL-адреса статического файла на основе конфигурации-->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    
+    {% block icon %} {% endblock %}
     <!--который устанавливает фоновое изображение элемента <body>с помощью ссылки на статический файл Django -->
     <style>
         body{

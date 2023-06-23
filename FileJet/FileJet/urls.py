@@ -43,7 +43,7 @@ urlpatterns = [
     path(r'admin/', admin.site.urls),
     path(r'about_us/', show_about_us, name='about_us'),
     path(r'', show_main, name='main'),
-    path(r'search/', show_search, name='search'),
+    path(r'search/<searched>/', show_search, name='search'),
     path(r'profile/', show_profile, name='profile'),
     path(r'file/<int:file_pk>/', show_file, name='file'),
     path(r'create_message_for_chat/', create_message, name='create_message'),
