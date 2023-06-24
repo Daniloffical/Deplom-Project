@@ -32,13 +32,13 @@ function loadStandartChat(){
 function  swapChatList(){
   if ($("#chat-content").css("display") == "flex"){
     $("#chat-content").css("display", "none")
-    $("#choose-chat-header").css("display", "flex");
+    $("#chats-header").css("display", "flex");
     $("#chats").css("display", "flex");
   }
     
   else if ($("#chat-content").css("display") == "none"){
     $("#chat-content").css("display", "flex")
-    $("#choose-chat-header").css("display", "none");
+    $("#chats-header").css("display", "none");
     $("#chats").css("display", "none");
   }
 }
