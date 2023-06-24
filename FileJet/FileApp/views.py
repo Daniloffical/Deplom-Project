@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 
 from ProfileApp.models import Profile
 
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 
 # Create your views he
 #декоратор, що використовується в Django для вказівки того, що функція подання або подання на основі класів потребують аутентифікації
@@ -53,8 +53,12 @@ def show_file(request, file_pk):
     return render(request, 'file.html', context)
 
 
-
-
+@login_required(login_url='main')
+def download_file(request, file_pk):
+    file = get_object_or_404(File, pk=file_pk)
+    response = HttpResponse(file.file_path)
+    response['Content-Disposition'] = f'attachment; filename="{file.file_path.name}"'
+    return response
 
 #декоратор, що використовується в Django для вказівки того, що функція подання або подання на основі класів потребують аутентифікації
 @login_required(login_url='main')
@@ -81,6 +85,12 @@ def show_upload_file(request):
 
             profile.used_size += int(file_size)
 
+            if profile.used_size > profile.total_size:
+                context = {"error": "Місце на облаці переповнено!", "form" : FileForm()}
+
+
+                return render(request, "upload_file.html", context)
+
             profile.save()
 
             #используется для сохранения измененных данных формы, 
@@ -92,12 +102,8 @@ def show_upload_file(request):
         #використовується для перенаправлення користувача на певну URL-адресу
         return redirect('upload_file')
     else:
-         #як порожній словник, ви можете пізніше заповнити його парами ключ-значення
         context = {}
-        #извлекает все объекты из Categoryмодели.
-        categories = Category.objects.all()
         #categories додає categoriesнабір запитів у contextсловник, роблячи його доступним для шаблону під час рендерингу.
-        context["categories"] = categories
         #створює екземпляр класу FileForm форми
         form = FileForm()
         #form додає categoriesнабір запитів у contextсловник, роблячи його доступним для шаблону під час рендерингу.

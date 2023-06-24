@@ -102,6 +102,10 @@
     border-radius: 14px;
 }
 
+.order-button.disable{
+    background: #db7474;
+}
+
 .order-button:hover{
     background: #43A9B5;
 }

@@ -13,7 +13,11 @@
         <!--угруповання та оформлення елементів-->
         <div class="settings_image">
             <!--створення кнопки "Вибрати файл"-->
-            <span id="without-text"><h3>Виберіть файл</h3></span>     
+            <span id="without-text"><h3>Виберіть файл</h3>
+                {% if error %}
+                    <h4 id="error-text">{{ error }}</h4>
+                {% endif %}
+            </span>     
             <div class="image_design">
                 <!--створює посилання на зовнішній файл CSS-->
                 <img id="image-file" src="{% static 'images/none_page.jpg' %}" alt="None">
@@ -37,7 +41,6 @@
                 <input type="hidden" name="file-size-bytes" id="file-size-bytes">
                 <div class="send"><button type="submit" class="button_send">Опублікувати</button></div>
             </form>
-
         </div>
     </main>
 {% endblock %}

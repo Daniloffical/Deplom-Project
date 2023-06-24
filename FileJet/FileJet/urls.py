@@ -46,6 +46,7 @@ urlpatterns = [
     path(r'search/<searched>/', show_search, name='search'),
     path(r'profile/', show_profile, name='profile'),
     path(r'file/<int:file_pk>/', show_file, name='file'),
+    path(r'download/<int:file_pk>/', download_file, name='download_file'),
     path(r'create_message_for_chat/', create_message, name='create_message'),
     path(r'create_chat_for_messages/', create_chat, name='create_chat'),
     path(r'get_messages_for_chat', get_messages, name='get_messages'),

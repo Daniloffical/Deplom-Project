@@ -52,7 +52,7 @@
                 {% endif %}</h4>
         </div>
         <div id="file-footer">
-            <a href="" id="text-download">Завантажити файл</a>
+            <a href="{% url 'download_file' file.pk %}" id="text-download">Завантажити файл</a>
             <!--відображення статичного зображення-->
             {% if is_uploader %}
             <button id="oLModal" onclick="openModal('Modal-uploader')"><img src="{% static 'images/chat_icon.svg' %}" alt="Чат"></button>
