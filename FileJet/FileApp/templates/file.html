@@ -67,7 +67,12 @@
 <!-- modal for uploader -->
 {% if is_uploader %}
 <div id="Modal-uploader" class="modal modal_move">
-    <div id="choose-chat-header"><button id="header-modal-button" onclick="closeModal('Modal-uploader')">&Cross;</button>Мої чати</div>
+    <div id="chats-header">
+        <button class="modal-button" onclick="closeModalHeader('Modal-uploader')">&Cross;</button>
+        <div id="chat-header-name">
+            Мої чати
+        </div>
+    </div>
     <div id="chats">
         {% for list in chat_and_last_message_list %}
         <div class="chat">

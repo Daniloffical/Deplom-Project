@@ -29,8 +29,14 @@ def show_profile(request):
             message_to_profile_user = message_to_profile.user
             file = chat.file
 
+            message = message_to_profile.message
 
-            message = f"{chat.name} {message_to_profile_user.username}: {message_to_profile.message}"
+            if len(message) > 30:
+                message = message[:30] + "..."
+            else:
+                message = message
+
+            message = f"{chat.name} {message_to_profile_user.username}: {message}"
 
             message_to_profile_user_list = [file, message]
             messages_to_profile.append(message_to_profile_user_list)
@@ -49,8 +55,15 @@ def show_profile(request):
             message_by_profile_user = message_by_profile.user
             file = chat.file
 
+            message = message_by_profile.message
 
-            message = f"{chat.name} {message_by_profile_user.username}: {message_by_profile.message}"
+            if len(message) > 30:
+                message = message[:30] + "..."
+            else:
+                message = message
+
+
+            message = f"{chat.name} {message_by_profile_user.username}: {message}"
 
             message_by_profile_user_list = [file, message]
             messages_by_profile.append(message_by_profile_user_list)

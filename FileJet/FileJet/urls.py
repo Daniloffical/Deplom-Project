@@ -58,6 +58,8 @@ urlpatterns = [
     path(r'subscription/', show_subscription, name='subscription'),
     path(r'authenticate/', authenticate, name='authenticate'),
     path(r'password_change/', show_password_change, name='password_change'),
+    path(r'disable_subscription/', disable_subscription, name='disable_subscription'),
+    path(r'enable_subscription/<int:subscription_pk>/', enable_subscription, name='enable_subscription'),
 ]
 
 handler404 = "FileApp.views.error404"

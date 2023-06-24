@@ -7,6 +7,7 @@ class Subscription(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='image/%Y/%m/%d')
     price = models.IntegerField(default=0)
+    size = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name

@@ -23,10 +23,14 @@
                 </ul>
             </div>
             <div class="subscription-footer">
-                {% if subscription.name == "Базовий" %}
-                <h3>Підключено</h3>
+                {% if profile.subscription.name == subscription.name %}
+                    {% if subscription.name == 'Базовий' %}
+                        Підключено
+                    {% else %}
+                        <a class="order-button disable" href="{% url 'disable_subscription' %}">Відключити</a>
+                    {% endif %}
                 {% else %}
-                <a class="order-button" href="">Підключити</a>
+                <a class="order-button" href="{% url 'enable_subscription' subscription.pk %}">Підключити</a>
                 {% endif %}
             </div>
         </div>

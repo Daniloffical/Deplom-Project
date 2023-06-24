@@ -106,10 +106,16 @@
     background: #db7474;
 }
 
+
+
 .order-button:hover{
     background: #43A9B5;
 }
 
+
+.order-button.disable:hover{
+    background: #ad4b4b;
+}
 .list-attributes{
     padding-left: 3%;
 }

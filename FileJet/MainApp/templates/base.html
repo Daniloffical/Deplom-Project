@@ -46,7 +46,7 @@
             <a href="{% url 'subscription' %}">Підписки</div></a>
         </div>
         <div class="no_account">
-            <button id="header-modal-button" onclick="openModalHeader('header-modal')"><img src="{% static 'images/chat_icon.svg' %}" alt="Чат"></button>
+            <button class="H-modal-button" onclick="openModalHeader('header-modal')"><img src="{% static 'images/chat_icon.svg' %}" alt="Чат"></button>
             <a href="{% url 'profile' %}">
                 {{ profile.user.username }}
                 <!--це умовний оператор у шаблонах-->
@@ -64,7 +64,12 @@
         </div>   
     </header>
     <div id="header-modal" class="modal-header modal_move-header">
-        <div id="H-chats-header"><button class="H-modal-button" onclick="closeModalHeader('header-modal')">&Cross;</button>Мої чати</div>
+        <div id="H-chats-header">
+            <button class="H-modal-button" onclick="closeModalHeader('header-modal')">&Cross;</button>
+            <div id="H-chat-header-name">
+                Мої чати
+            </div>
+        </div>
         <div id="H-chats">
             {% for list in chat_and_last_message_list_header %}
             <div class="H-chat">

@@ -210,6 +210,9 @@ header #search-bar:focus {
     
     display: flex;
     flex-direction: column;
+
+    gap: 12px;
+
     justify-content: flex-start;
     align-items: center;
     padding: 10px;
@@ -415,13 +418,19 @@ img.H-your-logo{
 }
 
 #H-chats-header{
+    box-sizing: border-box;
+
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    
     width: 100%;
     height: 5%;
+    
+    gap: 15px;
+    /* French Sky Blue */
+    
+    border-radius: 10px;
 }
 
 #H-chats{
@@ -466,6 +475,16 @@ img.H-your-logo{
     
     width: 62%;
     height: 100%;
+}
+
+.H-chat-info span{
+    font-size: small;
+    display: block;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .H-file-info{
