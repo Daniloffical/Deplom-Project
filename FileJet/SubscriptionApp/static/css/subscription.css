@@ -125,3 +125,15 @@
     font-size: 16px;
     hyphens: manual;
 }
+
+@media (max-width:767px) {
+    #subscriptions-list{
+        padding-top: 120px;
+        flex-direction: column;
+    }
+    .subscription-container{
+        
+        width: 70%;
+        height: 80%;
+    }
+}
