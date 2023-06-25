@@ -37,43 +37,17 @@ header{
 }
 
 #left-header-side{
+    height: 60%;
     padding-left: 1.5%;
     gap: 2%;
     display: flex;
     justify-content: space-between;
-    width: 28%;
+    width: 20%;
     align-items: center;
 }
 
 .logo{
-    width: 136px;
-    height: 52px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-}
-
-header #search-bar{
-    padding: 8px 6px;
-
-    width: 100%;
-
-    /* White */
-    font-size:16px;
-
-    background: #F8F8F8;
-    /* button 2 */
-
-    border: 4px solid #3E88EF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.32);
-    border-radius: 10px;
-    transition: 500ms ease-in-out;
-}
-
-header #search-bar:focus {
-    content: 'Пошук';
-    outline-width: 0;
-    border: 4px solid #1D6AEF;
+    height: 85%;
 }
 
 
@@ -85,30 +59,24 @@ header #search-bar:focus {
     justify-content: center;
     align-items: center;
     padding: 0px 0px;
-    gap: 57px;
-    width: 720px;
-    height: 92px;
+    gap: 5%;
+    width: 40%;
+    height: 100%;
     flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
 }
+
 .navigation_buttons a{
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 3px 15px;
-    height: 44px;
+    height: 40%;
     background: #1CAEEF;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
     border-radius: 14px;
-    border: 0px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-
+    transition: 200ms ease-in;
 }
+
 .navigation_buttons a:hover{
     background: #0C68E8;
 }
@@ -117,70 +85,38 @@ header #search-bar:focus {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 5px 40px;
+    padding: 5px 20px;
 
     gap: 15px;
 
-    width: 78px;
-    height: 74px;
+    width: 10%;
+    height: 100%;
 
     border-radius: 10px;
 
     /* Inside auto layout */
-
-    flex: none;
-    order: 2;
-    flex-grow: 0;
 }
 .no_account a{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 7px;
-    width: 78px;
-    height: 74px;
+    height: 100%;
 
     border-radius: 10px;
-
+    
     /* Inside auto layout */
 
-    flex: none;
-    order: 2;
-    flex-grow: 0;
 }
 
 .image_account{
     box-sizing: border-box;
 
-    width: 45px;
-    height: 45px;
+    object-fit: contain;
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    flex-grow: 0;
-    width: 45px;
-    height: 45px;
+    height: 50%;
     border-radius: 100%;
-    font-size: 14px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 150%;
-    /* identical to box height, or 21px */
     
-    letter-spacing: -0.019em;
-    
-    color: #000000;
-    
-    
-    /* Inside auto layout */
-    
-    flex: none;
-    flex-grow: 0;
 }
 
 
@@ -193,8 +129,9 @@ header #search-bar:focus {
   
 .modal-header {
     /* Update CSS with transition and transform rules */
-    transition: transform 0.2s ease-out;
     transform: translateX(278%);
+    transition: transform 0.2s ease-out;
+    
     position: fixed;
     z-index: 1;
     left: 0;
@@ -279,9 +216,8 @@ header #search-bar:focus {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 9px;
     
-    min-height: 9%;
 
     width: 100%;
 }
@@ -310,7 +246,7 @@ img.H-your-logo{
     min-width: 5%;
     max-width: 89%;
 
-    height:100%;  
+    min-height:100%;  
 }
 
 .message-cloud.right{
@@ -334,7 +270,7 @@ img.H-your-logo{
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 6px 10px;
+    padding: 16px 10px;
     gap: 12px;
     
 
@@ -518,11 +454,13 @@ img.H-your-logo{
 
 .H-modal-button{
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
+
+    height: 40%;
+
+
     padding: 7px;
-    gap: 10px;
     
     cursor: pointer;
 
@@ -531,11 +469,131 @@ img.H-your-logo{
     border: none;
     background: #1CAEEF;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
-    border-radius: 14px;
+    border-radius: 10px;
+}
+
+.H-modal-button.close{
+    height: 80%;
+
+}
+
+.H-modal-button img{
+    height: 100%;
+    object-fit: contain;
 }
 
 
 
 body::-webkit-scrollbar{
     display: none;
+}
+
+
+@media (max-width:767px) {
+    header{
+        height: 60px;
+    }
+
+    .logo{
+        height: 65%;
+    }
+
+    .modal-header {
+        /* Update CSS with transition and transform rules */
+        transform: translateY(-100%);
+        transition: transform 0.2s ease-out;
+        
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background: #FFFFFF;
+    
+        box-sizing: border-box;
+    
+        /* Auto layout */
+        
+        display: flex;
+        flex-direction: column;
+    
+        gap: 12px;
+    
+        justify-content: flex-start;
+        align-items: center;
+        padding: 10px;
+    
+        border: 4px solid #3E88EF;
+        border-radius: 0;
+    }
+    .modal-header.open {
+        transform: translateY(0%);
+      }
+    .navigation_buttons{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 5%;
+        width: 30%;
+        height: 90%;
+    }
+
+    .navigation_buttons a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px 4px;
+        height: 30%;
+        background: #1CAEEF;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+        border-radius: 6px;
+        font-size: 9px;
+        text-align: center;
+    }
+    
+    .image_account{
+        box-sizing: border-box;
+    
+    
+        /* Inside auto layout */
+    
+        flex: none;
+        flex-grow: 0;
+    
+        object-fit: contain;
+    
+        height: 40%;
+        border-radius: 100%;
+        
+    }
+    
+    .no_account{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 30px;
+    
+        gap: 3px;
+    
+        width: 10%;
+        height: 100%;
+    
+        border-radius: 10px;
+    
+        /* Inside auto layout */
+    }
+    .no_account a{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        font-size: 9px;
+        gap: 3%;
+    }
+
 }

@@ -17,22 +17,19 @@
         <form method="post">
         <!--це міра безпеки, що використовується для захисту від атак із підробкою міжсайтових запитів. -->
         {% csrf_token %}
-        <div class="login_content">
-        <!--логін.-->
-            <div class="login"><h1>Логін:</h1></div>
-        <!--Листи перевірки-->
-            <div class="login_1">
+        <div class="login"><h1>Логін</h1></div>
+        <div class="field-boxes">
+            <div class="field-box">
                 <h4>Псевдонім</h4>
                 <p><input class="field" type="text" placeholder="Введіть псевдонім" name="login" required></p>
             </div>
-            <div class="login_2">
+            <div class="field-box">
                 <h4>Пароль</h4>
                 <p><input class="field" type="password" placeholder="Введіть пароль" name="password" required></p>
             </div>
-            <button class="button_login">Вхід</button>
             <p style="color: red;">{{error}}</p>
         </div>
-
+        <button class="button-enter">Вхід</button>
         </form>
     </main>
 </div> 

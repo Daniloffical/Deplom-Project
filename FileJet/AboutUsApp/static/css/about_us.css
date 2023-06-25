@@ -2,69 +2,44 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 70px 20px;
-
-    
-    /* Inside auto layout */
-
-
+    justify-content: space-between;
+    flex: 1 1 auto;
+    order: 1;
+    align-self: stretch;
 }
 
-
-.first_slide{
+.slide{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    
-    gap: 17%;
     margin: 50px;
-
+    height: 30%;
 }
 
-
-.second_slide{
+.left_slide{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    
-    gap: 14%;
-    margin: 50px;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
-
-.third_slide{
+.right_slide{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    
-    gap: 11%;
-    margin: 50px;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.picture{
+    height: 100%;
+    max-height: 200px;
+    object-fit: contain;
 }
 
 
-.fourth_slide{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 2%;
-    margin: 50px;
-}
-
-
-.fifth_slide{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    
-    gap: 5%;
-
-}
 
 
 
@@ -89,44 +64,35 @@ main {
 
 footer{
     background-color: white !important;
+    width: 100%;
+    padding-top: 15px;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-
+    align-items: center;
     border-top: 3px solid #0836C1;
-    flex: none;
-    order: 2;
-    flex-grow: 0;
-    margin: 0px;
 }
 
 
 .left_side{
+    width: 60%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 0px;
-
-    flex: none;
-    order: 0;
-    flex-grow: 1;
+    gap: 10%;
+    height: 100%;
 }
 
 
 .right_side{
+    height: 100%;
+    width: 35%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px 0px;
-    gap: 10px;
-
-    flex: none;
-    order: 1;
-    flex-grow: 1;
+    gap: 20px;
 }
 
 
@@ -135,14 +101,9 @@ footer{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0px;
     gap: 30px;
-    width: 320px;
-    height: 300px;
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 1;
+    width: 40%;
+    height: 100%;
 }
 
 
@@ -153,12 +114,9 @@ footer{
     align-items: center;
     padding: 0px 0px;
     gap: 10px;
-    width: 320px;
-    height: 300px;
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 1;
+    width: 40%;
+    height: 100%;
+
 }
 
 
@@ -167,13 +125,9 @@ footer{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0px;
     gap: 10px;
-    width: 224px;
-    height: 102px;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+    width: 100%;
+    height: 60%;
 }
 
 
@@ -184,108 +138,104 @@ footer{
     align-items: center;
     padding: 0px 12px;
     gap: 10px;
-    width: 224px;
-    height: 68px;
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
+    height: 30%;
 }
 
 
-/* .development_team{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    gap: 10px;
-
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 1;
-} */
 
 
-.border_development_team{
+.development_team{
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 10px;
-    gap: 17px;
-    width: 400px;
-    height: 125px;
+    width: 70%;
+    height: 60%;
+    gap: 20%;
     background: #F8F8F8;
     border: 3px solid #1D6AEF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.32);
     border-radius: 25px;
-    flex: none;
-    order: 0;
-    flex-grow: 1;
 }
 
 
-.one{
+.line{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 0px;
     gap: 84px;
-    width: 362px;
-    height: 19.33px;
-    flex: none;
-    order: 0;
-    flex-grow: 1;
-}
-
-
-.two{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    gap: 84px;
-    width: 362px;
-    height: 19.33px;
-    flex: none;
-    order: 0;
-    flex-grow: 1;
-}
-
-
-.three{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    gap: 84px;
-    width: 362px;
-    height: 19.33px;
-    flex: none;
-    order: 0;
-    flex-grow: 1;
-}
-
-.left_slide{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 100px;
     width: 100%;
-    height: 120%;
 }
 
-.right_slide{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 100px;
-    width: 100%;
-    height: 120%;
+@media (max-width:767px) {
+    .slide{
+        height: 90%;
+        margin: 10px;
+    }
+
+    .picture{
+        max-height: 50px;
+    }
+    .right_slide{
+        font-size: 5px;
+    }
+    .left_slide{
+        font-size: 4px;
+    }
+    .text{
+        padding: 20px;
+        width: 80%;
+        height: 80%;
+        border: 1px solid #1D6AEF;
+        border-radius: 10px;
+        padding: 6px;
+    }
+    .rights{
+        font-size: 5px;
+        gap: 3px;
+    }
+    .contacts{
+        font-size: 5px;
+        gap: 3px;
+    }
+    .right_side{
+        font-size: 9px;
+        text-align: center;
+    }
+
+    .right_side h1{
+        font-size: 12px;
+        text-align: center;
+    }
+
+    
+    .development_team{
+        width: 70%;
+        height: 60%;
+        border: 1px solid #1D6AEF;
+        border-radius: 10px;
+    }
+
+    .line{
+        font-size: 4px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+    }
+
+    footer{
+        height: 20%;
+    }
+    .social_buttons a{
+        height: 100%;
+    }
+    .social_buttons a img{
+        height: 100%;
+    }
+
 }

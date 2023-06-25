@@ -46,9 +46,10 @@
             <a href="{% url 'subscription' %}">Підписки</div></a>
         </div>
         <div class="no_account">
+            {% if profile %}
             <button class="H-modal-button" onclick="openModalHeader('header-modal')"><img src="{% static 'images/chat_icon.svg' %}" alt="Чат"></button>
             <a href="{% url 'profile' %}">
-                {{ profile.user.username }}
+                
                 <!--це умовний оператор у шаблонах-->
                 {% if profile.image %}
                 <!--відображає тег <img> з вихідною URL-адресою та альтернативним текстом на основі profileоб'єкта.-->
@@ -59,13 +60,14 @@
                 <!--конец условного блока-->
                 {% endif %}
                 <!--виводить ім'я користувача, пов'язаного з об'єктом profile-->
-                
+                {{ profile.user.username }}
             </a>
+            {% endif %}
         </div>   
     </header>
     <div id="header-modal" class="modal-header modal_move-header">
         <div id="H-chats-header">
-            <button class="H-modal-button" onclick="closeModalHeader('header-modal')">&Cross;</button>
+            <button class="H-modal-button close" onclick="closeModalHeader('header-modal')">&Cross;</button>
             <div id="H-chat-header-name">
                 Мої чати
             </div>
@@ -96,7 +98,7 @@
         </div>
         <div id="H-chat-content">
             <div id="H-chat-header">
-                <button class="H-modal-button" onclick="closeModalHeader('header-modal')">&Cross;</button>
+                <button class="H-modal-button close" onclick="closeModalHeader('header-modal')">&Cross;</button>
                 <div id="H-chat-header-name">
                     <span id="H-chat-name"></span>
                 </div>

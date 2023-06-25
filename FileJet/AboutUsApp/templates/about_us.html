@@ -9,7 +9,7 @@
 {% block content %}
 <main>
     <!--містить зображення та абзац тексту.-->
-    <div class="first_slide">
+    <div class="first slide">
         <div class="left_slide">
             <img class="picture" src="{% static 'images/picture_logo.png' %}" alt="">
         </div>
@@ -22,7 +22,7 @@
         </div>
     </div>
  <!--містить зображення та абзац тексту.-->
-    <div class="second_slide">
+    <div class="second slide">
         <div class="left_slide">
             <div class="text">
                 <p>На FileJet ви можете завантажити будь-які типи файлів - фотографії, відео, документи, архіви та багато іншого. Після завантаження ваші файли автоматично розміщуються в безпечному і надійному сховищі в хмарі, що гарантує їх збереження та доступність з будь-якого пристрою з Інтернет-підключенням.</p>
@@ -36,7 +36,7 @@
         
     </div>
  <!--містить зображення та абзац тексту.-->
-    <div class="third_slide">
+    <div class="third slide">
         <div class="left_slide">
             <img class="picture" src="{% static 'images/chat_icon.png' %}" alt="">
         </div>
@@ -49,7 +49,7 @@
         </div>
     </div>
  <!--містить зображення та абзац тексту.-->
-    <div class="fourth_slide">
+    <div class="fourth slide">
         <div class="left_slide">
             <div class="text">
                 <p>Зручний і простий інтерфейс FileJet дозволяє легко навігувати по вашим файлам, організовувати їх у папки та встановлювати права доступу для співробітників або співмайстрів. Крім того, FileJet забезпечує високий рівень захисту даних, використовуючи шифрування та інші заходи безпеки, що дозволяють вам мати повну впевненість у приватності та безпеці ваших файлів.</p>
@@ -64,7 +64,7 @@
    
     </div>
 <!--містить зображення та абзац тексту.-->
-    <div class="fifth_slide">
+    <div class="fifth slide">
         <!--фото-->
         <div class="left_slide">
             <img class="picture" src="{% static 'images/icon.png' %}" alt="">
@@ -76,47 +76,47 @@
         </div>
 
     </div>
+    <footer>
+        <div class="left_side">
+            <div class="rights">
+                <h2>© 2023 FileJet.</h2>
+                <p>Усі права захищені.</p>
+                <div class="social_media">
+                    <p>Мы у соц-мережах:</p>
+                    <div class="social_buttons">
+                        <a href="https://telegram.org/"><img src="{% static 'images/telegram_button.png' %}" alt=""></a>
+                        <a href="https://twitter.com/file_jet"><img src="{% static 'images/twiter_button.png' %}" alt=""></a>
+                        <a href="https://www.instagram.com/filejet_/"><img src="{% static 'images/instagram_button.png' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="contacts">
+                <!--Текстове наповнення сайту.-->
+                <h3>Адреса:</h3>
+                <p>Київська область, місто Київ, пл. Копиленка, 07</p>
+                <h3>Пошта:</h3>
+                <p>FileJet@gmail.com</p>
+                <h3>Контактний номер телефона:</h3>
+                <p>+380998743965</p>
+            </div>
+        </div>
+        <div class="right_side">
+            <!--Текстове наповнення сайту.-->
+            <h1>Команда розробників</h1>
+            <div class="development_team">
+                <div class="line">
+                    <p>Мирон Осипенко</p>
+                    <p>Шаров Андрій</p>
+                </div>
+                <div class="line">
+                    <p>Данило Варянік</p>
+                    <p>Олексій Біляєв</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </main>
 
-<footer>
-    <div class="left_side">
-        <div class="rights">
-            <h2>© 2023 FileJet.</h2>
-            <p>Все права защищены.</p>
-            <div class="social_media">
-                <p>Мы у соц-мережах:</p>
-                <div class="social_buttons">
-                    <a href="https://telegram.org/"><img src="{% static 'images/telegram_button.png' %}" alt=""></a>
-                    <a href="https://twitter.com/file_jet"><img src="{% static 'images/twiter_button.png' %}" alt=""></a>
-                    <a href="https://www.instagram.com/filejet_/"><img src="{% static 'images/instagram_button.png' %}" alt=""></a>
-                </div>
-                
-            </div>
-        </div>
 
-        <div class="contacts">
-            <!--Текстове наповнення сайту.-->
-            <h3>Адреса:</h3>
-            <p>Київська область, місто Київ, пл. Копиленка, 07</p>
-            <h3>Пошта:</h3>
-            <p>FileJet@gmail.com</p>
-            <h3>Контактний номер телефона:</h3>
-            <p>+380998743965</p>
-        </div>
-    </div>
-    <div class="right_side">
-        <!--Текстове наповнення сайту.-->
-        <h1>Команда розробників</h1>
-        <div class="border_development_team">
-            <div class="two">
-                <p>Мирон Осипенко</p>
-                <p>Шаров Андрій</p>
-            </div>
-            <div class="three">
-                <p>Данило Варянік</p>
-                <p>Олексій Біляєв</p>
-            </div>
-        </div>
-    </div>
-</footer>
 {% endblock %}
