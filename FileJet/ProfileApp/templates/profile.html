@@ -72,9 +72,13 @@
                 <span>Завантажено файлів:{{ file_amount }}</span>
             </div>
             <div id="acception">
-                <span>Користувач не підтверджений</span>
-
-                <a href="{% url 'authenticate' %}" id="button-accept-email">Підтвердити!</a>
+                {% if not profile.authorised %}
+                    <span>Користувач не підтверджений</span>
+                    <a href="{% url 'authenticate' %}" id="button-accept-email">Підтвердити!</a>
+                {% else %}
+                    <span>Користувач авторизован!</span>
+                    <img src="{% static 'images/tick.png' %}" alt="">
+                {% endif %}
             </div>
         </div>
         <div id="profile-buttons">

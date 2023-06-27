@@ -86,11 +86,17 @@ def authenticate(request):
     user_name = request.user.username
     message = f"Вітаю: {user_name}\nВи підтвердили вашу пошту на сайті FileJet\nhttps://127.0.0.1:8000"
     try:
-        send_mail('Тема', message, 'settings.EMAIL_HOST_USER', [user_mail]) 
+        send_mail('Тема', message, 'settings.EMAIL_HOST_USER', [user_mail])
+        profile = Profile.objects.get(user=request.user)
+        profile.authorised = True
+        profile.save()
     except BadHeaderError:
         context['error'] = 'Знайдено некоректний заголовок'
     except SMTPSenderRefused:
         context['error'] = 'Неіснуюча пошта'
+        profile = Profile.objects.get(user=request.user)
+        profile.authorised = True
+        profile.save()
     return redirect("profile")
 
 @login_required(login_url='main')

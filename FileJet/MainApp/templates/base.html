@@ -49,7 +49,7 @@
             {% if profile %}
             <button class="H-modal-button" onclick="openModalHeader('header-modal')"><img src="{% static 'images/chat_icon.svg' %}" alt="Чат"></button>
             <a href="{% url 'profile' %}">
-                
+                {{ profile.user.username }}
                 <!--це умовний оператор у шаблонах-->
                 {% if profile.image %}
                 <!--відображає тег <img> з вихідною URL-адресою та альтернативним текстом на основі profileоб'єкта.-->
@@ -60,7 +60,6 @@
                 <!--конец условного блока-->
                 {% endif %}
                 <!--виводить ім'я користувача, пов'язаного з об'єктом profile-->
-                {{ profile.user.username }}
             </a>
             {% endif %}
         </div>   

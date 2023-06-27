@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from SubscriptionApp.models import Subscription
-
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -14,6 +13,8 @@ class Profile(models.Model):
     procent_size = models.IntegerField(default=0)
 
     subscription = models.ForeignKey(Subscription, on_delete=models.CASCADE, to_field='id', default="1")
+
+    authorised = models.BooleanField(default=False)
 
 
     def __str__(self):
