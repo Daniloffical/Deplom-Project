@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px 50px;
+    padding: 60px 200px;
 
 
     /* Inside auto layout */
@@ -11,5 +11,21 @@
     order: 1;
     flex-grow: 0;
     text-align: center;
-    font-size: 10px;
+    font-size: 20px;
+}
+
+#box-back{
+    width: 100%;
+}
+
+.content #box-back a{
+    display: flex;
+    width: 180px;
+    height: 40px;
+    padding: 7px 12px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+    background: var(--new-button, #1CAEEF);
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
 }

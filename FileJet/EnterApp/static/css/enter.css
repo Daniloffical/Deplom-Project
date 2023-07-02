@@ -97,6 +97,10 @@ main form{
     height: 70%;
 }
 
+span a{
+    text-decoration: underline;
+    color: #4563e7;
+}
 
 
 @media (max-width:767px) {
